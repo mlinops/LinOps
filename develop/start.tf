@@ -18,7 +18,7 @@ resource "google_compute_instance" "server" {
         network_interface {
             network = "default"
         }
-
+}
 #         shielded_instance_config {
 #             # Defines whether the instance has integrity monitoring enabled. 
 #             # Enables monitoring and attestation of the boot integrity of the instance. 
