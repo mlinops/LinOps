@@ -1,7 +1,7 @@
 #The Terraform Google provider is a plugin that allows Terraform to manage resources on Google Cloud Platform. 
 
 provider "google" {
-    #credentials = file("gcp.json")
+    #credentials = file("gcpx.json")
     project     = "onyx-osprey-371920"
     region      = "us-central1"
     zone     = "us-central1-a"
