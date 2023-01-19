@@ -7,9 +7,15 @@ provider "google" {
     zone     = "us-central1-a"
 }
 
+resource "google_service_account" "default" {
+    account_id = "terraform-agent" 
+    display_name = "terraform-agent"
+}
+
 resource "google_compute_instance" "server" {
     name = "gcp-server-1"
     machine_type = "e2-micro"
+    
     boot_disk {
         initialize_params {
             image = "ubuntu-2204-lts"
