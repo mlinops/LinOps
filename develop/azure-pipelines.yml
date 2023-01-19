@@ -19,7 +19,7 @@ steps:
 - task: ms-devlabs.custom-terraform-tasks.custom-terraform-release-task.TerraformTaskV3@3
   displayName: 'Terraform : INIT'
   inputs:
-    provider: gcp
+    provider: 'gcp'
     command: 'plan'
     workingDirectory: '$(System.DefaultWorkingDirectory)/LinOps/develop'
     backendServiceGCP: 'terraform-automation'
