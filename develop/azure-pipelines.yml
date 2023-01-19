@@ -4,7 +4,7 @@ trigger:
 pool:
 #  name: 'Test'
   demands: 
-  - Agent.OS -equals Hosted Windows 2019 with VS2019
+  - Agent.OS -equals Linux
 
 steps:
 
