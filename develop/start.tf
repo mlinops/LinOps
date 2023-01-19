@@ -34,6 +34,12 @@ resource "google_compute_instance" "server" {
     metadata = {
         block-project-ssh-keys = true
    }
+
+   service_account {
+     # Google recommends custom service accounts that have cloud-platform scope and permissions granted via IAM Roles.
+     email  = google_service_account.default.email
+     scopes = ["cloud-platform"]
+   }
     
 }
 
