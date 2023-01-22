@@ -11,10 +11,6 @@ sudo sed -i 's/PermitRootLogin prohibit_password/PermitRootLogin yes/g' /etc/ssh
 sudo sed -i '/PermitRootLogin yes/s/^#//g' /etc/ssh/sshd_config
 sudo /etc/init.d/ssh restart
 
-# Pull the ansible start script
-curl -fsSL https://raw.githubusercontent.com/linaduko/LinOps/develop/develop/ansible/service/ansible.sh
-sudo bash /tmp/ansible.sh
-
 # Pull the ansible config
 curl -fsSL https://raw.githubusercontent.com/linaduko/LinOps/develop/develop/ansible/service/ansible.cfg -o /tmp/ansible.cfg
 sudo mv /tmp/ansible.cfg /etc/ansible/ansible.cfg
@@ -24,7 +20,7 @@ curl -fsSL https://raw.githubusercontent.com/linaduko/LinOps/develop/develop/ans
 sudo mv /tmp/hosts /etc/ansible/hosts 
 
 # Pull the playbook-file for ansible
-https://raw.githubusercontent.com/linaduko/LinOps/develop/develop/ansible/playbook-main.yml
+https://raw.githubusercontent.com/linaduko/LinOps/develop/develop/ansible/playbook-main.yml -o /tmp/playbook-main.yml
 sudo ansible-playbook /tmp/playbook-main.yml
 
 systemctl is-active --quiet nginx && echo Service is running > test.txt
