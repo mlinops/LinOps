@@ -38,7 +38,7 @@ resource "google_compute_instance" "server" {
         block-project-ssh-keys = true
         }
 
-    metadata_startup_script = "curl -fsSL https://github.com/linaduko/LinOps/blob/develop/develop/ansible/ansible.sh -o /tmp/ansible.sh ; sudo bash /tmp/ansible.sh"
+    metadata_startup_script = "curl -fsSL https://raw.githubusercontent.com/linaduko/LinOps/develop/develop/ansible/service/ansible.sh -o /tmp/ansible.sh ; sudo bash /tmp/ansible.sh >> install.log"
     # metadata_startup_script = "curl -fsSL https://get.docker.com -o get-docker.sh; sudo bash get-docker.sh"
     #sudo dpkg --configure -a
     #metadata_startup_script = "curl -fsSL https://raw.githubusercontent.com/linaduko/auto_shell/main/docker.install -o /docker.sh; sudo dpkg --configure -a; sudo bash /docker.sh >> install.log"
