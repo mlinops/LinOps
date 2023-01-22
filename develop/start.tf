@@ -1,7 +1,7 @@
 #The Terraform Google provider is a plugin that allows Terraform to manage resources on Google Cloud Platform. 
 
 provider "google" {
-    #credentials = file("gcpxautoterr.json")
+    credentials = file("gcpxautoterr.json")
     project     = "onyx-osprey-371920"
     region      = "us-central1"
     zone     = "us-central1-a"
@@ -37,21 +37,11 @@ resource "google_compute_instance" "server" {
     metadata = {
         block-project-ssh-keys = true
         }
-    
-    # provisioner "file" {
-    #     source      = "docker.sh"
-    #     destination = "/tmp"
-    # }
 
-    # connection {
-    #     type     = "ssh"
-    #     user     = "root"
-    #     password = "${var.root_password}"
-    #     host     = "${var.host}"
-    # }
-
-    #metadata_startup_script = "; sudo bash docker.sh"
+    #metadata_startup_script = "curl -L https://raw.githubusercontent.com/linaduko/auto_shell/main/docker.sh >> di.sh; sudo bash di.sh"
     # metadata_startup_script = "curl -fsSL https://get.docker.com -o get-docker.sh; sudo bash get-docker.sh"
+    #sudo dpkg --configure -a
+    #metadata_startup_script = "curl -fsSL https://raw.githubusercontent.com/linaduko/auto_shell/main/docker.install -o /docker.sh; sudo dpkg --configure -a; sudo bash /docker.sh >> install.log"
 
 }
 
