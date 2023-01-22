@@ -14,36 +14,33 @@ provider "google" {
 
 // Define VM resources
 
-resource "google_compute_instance" "server" {
-    name = "gcp-server-1"
-    machine_type = "e2-micro"
+# resource "google_compute_instance" "server" {
+#     name = "gcp-server-1"
+#     machine_type = "e2-micro"
 
-    shielded_instance_config {
-        enable_vtpm = true
-        enable_integrity_monitoring = true
-    }
+#     shielded_instance_config {
+#         enable_vtpm = true
+#         enable_integrity_monitoring = true
+#     }
 
-    boot_disk {
-        initialize_params {
-            image = "ubuntu-2004-lts"
-        }
-    }
+#     boot_disk {
+#         initialize_params {
+#             image = "ubuntu-2004-lts"
+#         }
+#     }
 
-        network_interface {
-            network = "default"
-            network_ip = "10.128.0.11"
-        }
+#         network_interface {
+#             network = "default"
+#             network_ip = "10.128.0.11"
+#         }
 
-    metadata = {
-        block-project-ssh-keys = true
-        }
+#     metadata = {
+#         block-project-ssh-keys = true
+#         }
 
-    metadata_startup_script = "curl -fsSL https://raw.githubusercontent.com/linaduko/LinOps/develop/develop/ansible/service/ansible.sh -o /tmp/ansible.sh ; sudo bash /tmp/ansible.sh >> install.log"
-    # metadata_startup_script = "curl -fsSL https://get.docker.com -o get-docker.sh; sudo bash get-docker.sh"
-    #sudo dpkg --configure -a
-    #metadata_startup_script = "curl -fsSL https://raw.githubusercontent.com/linaduko/auto_shell/main/docker.install -o /docker.sh; sudo dpkg --configure -a; sudo bash /docker.sh >> install.log"
+#     metadata_startup_script = "curl -fsSL https://raw.githubusercontent.com/linaduko/LinOps/develop/develop/ansible/service/ansible-start-deb.sh -o /tmp/ansible.sh; sudo bash /tmp/ansible.sh"
 
-}
+# }
 
 
 
@@ -54,27 +51,27 @@ resource "google_compute_instance" "server" {
 #    }
 
 
-# resource "google_compute_instance" "server-2" {
-#     name = "gcp-server-2"
-#     machine_type = "e2-micro"
+resource "google_compute_instance" "server-2" {
+    name = "gcp-server-2"
+    machine_type = "e2-micro"
 
-#     shielded_instance_config {
-#         enable_vtpm = true
-#         enable_integrity_monitoring = true
-#     }
+    shielded_instance_config {
+        enable_vtpm = true
+        enable_integrity_monitoring = true
+    }
 
-#     boot_disk {
-#         initialize_params {
-#             image = "centos-7-v20200403"
-#         }
-#     }
-#         network_interface {
-#             network = "default"
-#             network_ip = "10.128.0.12"
-#         }
+    boot_disk {
+        initialize_params {
+            image = "centos-7-v20200403"
+        }
+    }
+        network_interface {
+            network = "default"
+            network_ip = "10.128.0.12"
+        }
 
-#     metadata = {
-#         block-project-ssh-keys = true
-#     }
-# }
+    metadata = {
+        block-project-ssh-keys = true
+    }
+}
 
