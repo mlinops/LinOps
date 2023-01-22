@@ -2,7 +2,7 @@
 sudo apt update
 
 # Installation of the necessary packages
-sudo apt-get -y install ansible curl
+sudo apt-get -y install ansible
 
 # Set up SSH for ansible:
 sudo ssh-keygen -f /root/.ssh/id_rsa -q -N ""

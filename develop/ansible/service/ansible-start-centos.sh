@@ -1,8 +1,8 @@
 # Update the packet index in the Linux system
-sudo yum -y update
+#sudo yum -y update
 
 # Installation of the necessary packages
-sudo yum -y install ansible curl
+sudo yum -y install ansible
 
 # Set up SSH for ansible:
 sudo ssh-keygen -f /root/.ssh/id_rsa -q -N ""
