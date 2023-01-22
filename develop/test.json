@@ -1,0 +1,12 @@
+{
+  "type": "service_account",
+  "project_id": "onyx-osprey-371920",
+  "private_key_id": "35330db00879effbfb607523872d1b84a3748f2b",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvgIBADANBgkqhkiG9w0BAQEFAASCBKgwggSkAgEAAoIBAQDUWhyUIMK53578\nrxgyrU6/UeMVRLOz57f7Q00D2tQRhsDhQ7EobcXJdFPT4uz+LTcmFWcDxbDvG8ce\nMyEluO2kpu8bN5bsx616pKexmPhnxaNpeZPe39ixj0Nuw9FtHax6IkkEwxHmtGsG\nKD84RoG/cUxFJ+nLyU+Oas/Z8cwE0GFs3VQNoa9s2cn+cPNwAsvQXXddxLhRQVYP\nMNfHsVs0wfmlA4ra9NPd9pv7MmkT6CHYpdu99elcohoYQhreaqT/8JyHhm3MZAe9\n8+3U5csIYGBz8S6V2eM1mmEz7AGKXF6a7NHjdISTFuEULG4G86V2xmeePHKKYnW7\n8aGiYfiLAgMBAAECggEAAtXwjhfWkdsxySe2F9h8SzjBjWNSpQM3T+nTqaAD90yd\n3xmOJZSQW22BaxHGNBS606Ld3SKIMivkSlEeJF37qm23lrJKLSpIykZQSPev0C7x\nojMcmDwpWCGqIbIIEMAghqxWM56T6slGU+7jUpHlIf8rfhGXi9WfNC8qobtFYVu4\nHDmkk+uPU7kvKSks5edinIbsuz+ouROS54E10hVz0onYhwWEArakN4CxCnNDIzdG\ncoZBoURQwS06tWItJhmfILvXW26PcQp7nEBSnhXnx3h/UARwJUqHfO6T3Fpr/tkC\n76q4r0MxKFbRhM8Xk+eCfz1254uImkmHjvBou10OsQKBgQD30ixAaLHbkj4EyiIZ\nEF74mKfo1al+NC6/3aMxVPS1TmCyxJutV5+kf2kAH9+c6jJfrkQqoenu7VS4u9RR\nsio7XARXqPGb2vQRF22Sj43kmTWUurRy546f/wqctjjbGZpy0T0PHDFZPV4bzPxZ\n53ifv/CRAe42bA05q5Qs5WaWcQKBgQDbXENX7aKtZxw39u16EGIBKxJa2hduvwob\n/xwPFTLBG0av+i7prtMJM99nKZSKAxMe5yQSdjTToUdFZI4yZcxQkzW2bpJrYwEa\nwaae0fBwGWESdZfBXdmJ3fV6Nlc/Oba473j1JQBBXKbSjN8iNqlExpf6S3FwlHh6\nq+U7FOVUuwKBgQCGM5inIIsAXsebDGM+s3DaqsBzBBGPOG8Ak+Ol+V2zOUiARpwP\nWN4o1J5l5NzROrogulxLwfbO3lL83ypxO0xHbOMlHWYJgp6dCtTZg0fRvW4YpqrF\ndsPzvMdgagWMEOdkug6Yuim3K9Zks7MMdJ8L04NQ43y+l/DphBLv5SKS4QKBgQCc\nJ0C1Ti/42qbG3BvPQexSQpQNYqU9q/cJWQBjaEa6Gq2mRiWxKkeGjIujB4F7AZdR\n717JWaZfZLa0mlFzZO4eCb05wdqvYUn+/w2aj35mflqQ5m8CMsnSD9RYjGhtVKtT\nWP21HQLihI8o4SlSVLEIiYrUnXICn15ojQdgmI5sUwKBgE8li+qcx0p3QzYIrpwU\nD5J+NtCiSqTJ0AHXbvgzIL3dinCfBMMva14YvMbNNgmB2BoSlhjRGJMrs4sytD6u\nTgxtIcr+uUh3f1y9zASWbmvCQ5uVnePJ4ZTBodrrg6DM7xsYwtT0v1AKQt9Eyj+m\nuznnXJSHNpu/Ga85r5lzPJmQ\n-----END PRIVATE KEY-----\n",
+  "client_email": "terraform-automation@onyx-osprey-371920.iam.gserviceaccount.com",
+  "client_id": "116212672172685802399",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/terraform-automation%40onyx-osprey-371920.iam.gserviceaccount.com"
+}

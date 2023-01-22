@@ -1,0 +1,14 @@
+---
+- hosts: test
+  become: yes
+ 
+  tasks:
+ 
+  - name: install nginx
+    yum: name=nginx update_cache=yes
+ 
+  - name: start nginx
+    service: name=nginx state=started
+ 
+  - name: restart nginx
+    service: name=nginx state=restarted
