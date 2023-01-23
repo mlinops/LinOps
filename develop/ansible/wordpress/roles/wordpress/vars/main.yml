@@ -1,0 +1,6 @@
+---
+http_host: "itstep.zone"
+mysql_db: "wordpress_db"
+mysql_root_password: "Aa123456"
+mysql_user: "sadmin"
+mysql_password: "Aa123456"

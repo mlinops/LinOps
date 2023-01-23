@@ -1,0 +1,6 @@
+---
+#HTTP Settings
+http_host: "itstep.zone"
+http_conf: "itstep.zone.conf"
+http_port: "80"
+

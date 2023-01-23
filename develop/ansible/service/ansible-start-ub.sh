@@ -2,7 +2,7 @@
 sudo apt update
 
 # Installation of the necessary packages
-sudo apt-get -y install ansible
+sudo apt-get -y install ansible subversion
 
 # Set up SSH for ansible:
 sudo ssh-keygen -f /root/.ssh/id_rsa -q -N ""
@@ -19,6 +19,6 @@ sudo mv /tmp/ansible.cfg /etc/ansible/ansible.cfg
 curl -fsSL https://raw.githubusercontent.com/linaduko/LinOps/develop/develop/ansible/service/hosts -o /tmp/hosts
 sudo mv /tmp/hosts /etc/ansible/hosts 
 
-# Pull the playbook-file for ansible
-curl -fsSL https://raw.githubusercontent.com/linaduko/LinOps/develop/develop/ansible/playbook-main.yml -o /tmp/playbook-main.yml
-sudo ansible-playbook /tmp/playbook-main.yml
+# # Pull the playbook-file for ansible
+# curl -fsSL https://raw.githubusercontent.com/linaduko/LinOps/develop/develop/ansible/playbook-main.yml -o /tmp/playbook-main.yml
+# sudo ansible-playbook /tmp/playbook-main.yml
