@@ -1,47 +1,53 @@
 #The Terraform Google provider is a plugin that allows Terraform to manage resources on Google Cloud Platform. 
 
 provider "google" {
-    credentials = file("test.json")
+    #credentials = file("test.json")
     project     = "onyx-osprey-371920"
     region      = "us-central1"
     zone     = "us-central1-a"
 }
 
+terraform {
+  backend "gcs" {
+    bucket = "linops-bucket"
+    prefix  = "terraform/state"
+  }
+}
 # resource "google_service_account" "default" {
 #     account_id = "terraform-automation" 
 #     display_name = "terraform-automation"
 # }
 
-resource "google_compute_instance" "server-stable" {
-    name = "gcp-server-0"
-    machine_type = "e2-small"
+# resource "google_compute_instance" "server-stable" {
+#     name = "gcp-server-0"
+#     machine_type = "e2-small"
 
-    shielded_instance_config {
-        enable_vtpm = true
-        enable_integrity_monitoring = true
-    }
+#     shielded_instance_config {
+#         enable_vtpm = true
+#         enable_integrity_monitoring = true
+#     }
 
-    boot_disk {
-        initialize_params {
-            image = "ubuntu-2004-lts"
-        }
-    }
+#     boot_disk {
+#         initialize_params {
+#             image = "ubuntu-2004-lts"
+#         }
+#     }
 
-        network_interface {
-            network = "default"
-            network_ip = "10.128.0.10"
-        }
+#         network_interface {
+#             network = "default"
+#             network_ip = "10.128.0.10"
+#         }
 
-    metadata = {
-        block-project-ssh-keys = true
-    }    
+#     metadata = {
+#         block-project-ssh-keys = true
+#     }    
 
-}
+# }
 
 // Define VM resources
 
 resource "google_compute_instance" "server" {
-    name = "gcp-server-1"
+    name = "gcp-server-1-${terraform.workspace}"
     machine_type = "e2-micro"
 
     shielded_instance_config {
@@ -57,7 +63,6 @@ resource "google_compute_instance" "server" {
 
         network_interface {
             network = "default"
-            network_ip = "10.128.0.11"
         }
 
     metadata = {
