@@ -2,11 +2,15 @@ trigger:
 - develop
 
 pool:
-  vmImage: ubuntu-latest
+  vmImage: 'Ubuntu 20.04'
 
 steps:
+- script: echo Hello, world!
+  displayName: 'Run a one-line script'
+  enviroment: instance
 
-- task: UsePythonVersion@0
-  displayName: 'Install Python'
-  inputs:
-    versionSpec: '3.6'
+- script: |
+    echo Add other tasks to build, test, and deploy your project.
+    echo See https://aka.ms/yaml
+  displayName: 'Run a multi-line script'
+  enviroment: instance
