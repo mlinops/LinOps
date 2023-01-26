@@ -28,7 +28,7 @@ stages:
       runOnce:
         deploy:
           steps:
-          - script: apt install subversion 
+          - script: sudo apt install subversion 
 
         
 
