@@ -1,4 +1,6 @@
-https://ubuntu.com/blog/launch-ubuntu-desktop-on-google-cloud
+<h1 style="text-align: center;">How to launch Ubuntu Desktop in Google Cloud</h1>
+
+<p><img style="display: block; margin-left: auto; margin-right: auto;" src="https://www.ubuntufree.com/wp-content/uploads/2020/04/Black-Ubuntu-20-04-Default-Wallpaper-2048x1280.png" alt="" width="1000" height="620" /></p>
 
 This tutorial shows you how to set up a Ubuntu Desktop on Google Cloud. If you need a graphic interface to your virtual desktop on the cloud, this tutorial will teach you how to set up a desktop environment just like what you can get on your own computer.
 
@@ -14,13 +16,14 @@ We need four steps to set up a machine:
 At this stage, we will launch a copy of the virtual machine in Google Cloud.
 
 1. In the Google Cloud Console, go to the VM Instances page:
-2. Click CREATE INSTANCE.
-3. Set the instance name to ubuntu-desktop .
-4. Select a region and zone you want to run your instance.
-5. Scroll down to the Boot disk options and click Change
-6. In the Boot disk pop-up window, in Operating System, select Ubuntu Pro from the drop-down; in Version, select Ubuntu-Pro-20.04-LTS; keep the rest options as default value and click SELECT. 
-7. Click CREATE to create the instance.
-8. In less than one minute, you will be able to see your Ubuntu instance in RUNNING status. You can click the SSH button in the instance list to connect to your new instance.
+> ![изображение](https://user-images.githubusercontent.com/101510056/214898217-19e8349e-53b7-4f65-bcbd-1c356fc41eeb.png)
+3. Click `CREATE INSTANCE`.
+4. Set the instance name, region, boot disk options.
+
+❗ Operating System, select Ubuntu-Pro-20.04-LTS 
+
+8. Click `CREATE` to create the instance.
+9. In less than one minute, you will be able to see your Ubuntu instance in RUNNING status. You can click the SSH button in the instance list to connect to your new instance.
 
 ### Install Chrome Remote Desktop on the VM instance
 
