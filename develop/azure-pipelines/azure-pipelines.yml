@@ -28,7 +28,7 @@ stages:
       runOnce:
         deploy:
           steps:
-          - script: echo Hello world
+          - script: echo Hello world > /home/lina_infobox/test-azure.txt
 
         
 
