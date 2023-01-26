@@ -1,13 +1,22 @@
 trigger:
 - develop
 
-pool:
-  vmImage: 'Ubuntu 20.04'
+variables:
+  environmentName: 'instance'
+  vmImageName: 'Ubuntu 20.04'
+stages:
+- stage: Build
+  displayName: Build stage
+  jobs:
+  - job: Build
+    displayName: Build
+    pool:
+      vmImage: $(vmImageName)
+      
+    steps:
 
-steps:
-- script: echo Hello, world!
-  displayName: 'Run a one-line script'
-  pool: ${vmImage}
-#  enviromentName: 'instance'
+    - script: echo Hello, world!
+      displayName: 'Run a one-line script'
+        
 
 
