@@ -1,5 +1,5 @@
 ---
-- hosts: web-clean-os
+- hosts: all
   become: yes
  
   tasks:
