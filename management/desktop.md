@@ -82,11 +82,23 @@ https://remotedesktop.google.com/headless
 ![изображение](https://user-images.githubusercontent.com/101510056/215178060-e56d027b-5e02-4546-b4f4-f7a535f12cba.png)
 
 3. On the Set up another computer page, click Begin.
+
+![изображение](https://user-images.githubusercontent.com/101510056/215180041-0f90fb26-34ae-492e-9498-dc29c1106a19.png)
+
 4. Click Next. You already installed the Chrome Remote Desktop on the remote computer in STEP2 (Install and configure the Chrome Remote Desktop service on the VM instance)
+
+![изображение](https://user-images.githubusercontent.com/101510056/215179997-e1b6c3d5-e328-43ae-80b3-8f37c387e6aa.png)
+
 5. Click Authorize.
+
+![изображение](https://user-images.githubusercontent.com/101510056/215179946-f15b4e5e-1ea1-4655-bcbb-1d99132c7c33.png)
+
 6. Now you get the command to set up and start the Chrome Remote Desktop service on your VM instance. Copy the command for Debian Linux.
 
+![изображение](https://user-images.githubusercontent.com/101510056/215179822-12b28ebe-e4dc-46ee-9a49-5d7aeb96b6b0.png)
+
 7. Paste the command to the SSH window that connects to your VM instance. Run the command.
+
 ![изображение](https://user-images.githubusercontent.com/101510056/215179524-86dcc7a9-6c24-4a1d-8b4c-e7027ef5c694.png)
 
 8. Enter a 6 digit PIN when prompted. This PIN will be used when you log into the VM instance from your Chrome. If you see errors like Fail to read or No net_fetcher, ignore them.
