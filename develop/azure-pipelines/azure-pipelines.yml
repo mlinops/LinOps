@@ -1,12 +1,40 @@
 trigger:
 - develop
 
-pool:
-  vmImage: ubuntu-latest
+variables:
+  environmentName: 'instance'
+  vmImageName: 'Ubuntu 20.04'
 
-steps:
+stages:
 
-- task: UsePythonVersion@0
-  displayName: 'Install Python'
-  inputs:
-    versionSpec: '3.6'
+- stage: Build
+  displayName: Build stage
+  jobs:
+  - job: Build
+    displayName: Build
+    pool:
+      vmImage: $(vmImageName)
+      
+    steps:
+
+    - script: echo Hello, world!
+      displayName: 'Run a one-line script'
+      
+- stage: Test
+  jobs:
+  - deployment: test
+    displayName: Test
+#    pool:
+#       vmImage: $(vmImageName)
+    environment: $(environmentName)
+    strategy:
+      runOnce:
+        deploy:
+          steps:
+          - script: sudo ansible all -m ping 
+
+
+
+        
+
+
