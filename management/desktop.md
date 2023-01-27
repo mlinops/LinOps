@@ -78,8 +78,6 @@ To start the remote desktop connection, you need to have an authorization key fo
 ```
 https://remotedesktop.google.com/headless
 ```
-![изображение](https://user-images.githubusercontent.com/101510056/215178060-e56d027b-5e02-4546-b4f4-f7a535f12cba.png)
-
 3. On the Set up another computer page, click Begin.
 
 ![изображение](https://user-images.githubusercontent.com/101510056/215180041-0f90fb26-34ae-492e-9498-dc29c1106a19.png)
