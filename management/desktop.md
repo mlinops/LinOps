@@ -35,12 +35,12 @@ The next step is to install Chrome Remote Desktop on the VM instance.
 sudo apt update
 sudo apt install --assume-yes wget tasksel
 ```
-
 2. Download and install the Debian Linux Chrome Remote Desktop installation package:
 ```
 wget https://dl.google.com/linux/direct/chrome-remote-desktop_current_amd64.deb
 sudo apt-get install --assume-yes ./chrome-remote-desktop_current_amd64.deb
 ```
+![изображение](https://user-images.githubusercontent.com/101510056/215173420-dae28a51-b347-4840-9d7d-f3407ef86a51.png)
 
 ### Set up a Ubuntu desktop environment in the VM instance
 
@@ -48,7 +48,11 @@ Now we need to install a desktop environment and window manager for Chrome Remot
 
 1. In the SSH window connected to your VM instance, install Ubuntu desktop environment:
 
+```
 sudo tasksel install ubuntu-desktop
+```
+![изображение](https://user-images.githubusercontent.com/101510056/215173990-fd5ed2d0-3b01-44a9-b176-d68515af1ac7.png)
+![изображение](https://user-images.githubusercontent.com/101510056/215174202-69d899ae-586c-47ec-a80f-79ef59a87697.png)
 
 2. Set your Chrome Remote Desktop session to use Gnome, which is the default desktop environment for Ubuntu:
 ```
