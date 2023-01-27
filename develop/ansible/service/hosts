@@ -1,21 +1,5 @@
 [all]
-10.128.0.11
-10.128.0.12
-10.128.0.13
-
-[web-clean-os]
-10.128.0.11
-10.128.0.12
-
-; [web-ubuntu]
-; 10.128.0.11
-; 10.128.0.13
-
-; [web-centos]
-; 10.128.0.12
-
-[web-docker]
-10.128.0.13
+gcp-server-1-dev
 
 [all:vars]
 ansible_user=root
