@@ -111,3 +111,6 @@ If the service is running, you will see the status is active:
 Active: active (running) since DATE_TIME; ELAPSED_TIME
 ```
 Now you are ready to connect to the VM instance through Chrome Remote Desktop web application.
+
+![изображение](https://user-images.githubusercontent.com/101510056/215180405-298efc23-feda-48be-aedf-544cc53240f7.png)
+
