@@ -52,7 +52,6 @@ Now we need to install a desktop environment and window manager for Chrome Remot
 sudo tasksel install ubuntu-desktop
 ```
 ![изображение](https://user-images.githubusercontent.com/101510056/215173990-fd5ed2d0-3b01-44a9-b176-d68515af1ac7.png)
-![изображение](https://user-images.githubusercontent.com/101510056/215174202-69d899ae-586c-47ec-a80f-79ef59a87697.png)
 
 2. Set your Chrome Remote Desktop session to use Gnome, which is the default desktop environment for Ubuntu:
 ```
