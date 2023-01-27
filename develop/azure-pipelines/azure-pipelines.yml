@@ -4,7 +4,9 @@ trigger:
 variables:
   environmentName: 'instance'
   vmImageName: 'Ubuntu 20.04'
+
 stages:
+
 - stage: Build
   displayName: Build stage
   jobs:
@@ -29,7 +31,9 @@ stages:
       runOnce:
         deploy:
           steps:
-          - script: sudo apt install subversion 
+          - script: sudo ansible all -m ping 
+
+
 
         
 
