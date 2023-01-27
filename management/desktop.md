@@ -58,11 +58,14 @@ sudo tasksel install ubuntu-desktop
 ```
 sudo bash -c 'echo "exec /etc/X11/Xsession /usr/bin/gnome-sessio" > /etc/chrome-remote-desktop-session'
 ```
+![изображение](https://user-images.githubusercontent.com/101510056/215176346-325b4e17-91cf-4d80-9383-76b3f7d7c467.png)
+
 3. You just need to reboot your Ubuntu VM instance.
 
 ```
 sudo reboot
 ```
+![изображение](https://user-images.githubusercontent.com/101510056/215176615-37586e8e-aee6-4faf-987a-40f9a44e80f0.png)
 
 You will lose connection to your VM instance immediately. Don’t panic, close the SSH window, wait a few seconds and you will SSH into it through the Cloud Console again in the next step.
 
@@ -76,13 +79,15 @@ To start the remote desktop connection, you need to have an authorization key fo
 ```
 https://remotedesktop.google.com/headless
 ```
+![изображение](https://user-images.githubusercontent.com/101510056/215178060-e56d027b-5e02-4546-b4f4-f7a535f12cba.png)
 
 3. On the Set up another computer page, click Begin.
-4. Click Next. You already installed the Chrome Remote Desktop on the remote computer in STEP2(Install and configure the Chrome Remote Desktop service on the VM instance)
+4. Click Next. You already installed the Chrome Remote Desktop on the remote computer in STEP2 (Install and configure the Chrome Remote Desktop service on the VM instance)
 5. Click Authorize.
 6. Now you get the command to set up and start the Chrome Remote Desktop service on your VM instance. Copy the command for Debian Linux.
 
 7. Paste the command to the SSH window that connects to your VM instance. Run the command.
+![изображение](https://user-images.githubusercontent.com/101510056/215179524-86dcc7a9-6c24-4a1d-8b4c-e7027ef5c694.png)
 
 8. Enter a 6 digit PIN when prompted. This PIN will be used when you log into the VM instance from your Chrome. If you see errors like Fail to read or No net_fetcher, ignore them.
 
@@ -90,6 +95,8 @@ https://remotedesktop.google.com/headless
 ```
 sudo systemctl status chrome-remote-desktop@$USER
 ```
+![изображение](https://user-images.githubusercontent.com/101510056/215179632-4921e869-3ba3-4b58-9b72-ccb09a323fce.png)
+
 If the service is running, you will see the status is active:
 ```
 Active: active (running) since DATE_TIME; ELAPSED_TIME
