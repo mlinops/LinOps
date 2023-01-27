@@ -14,10 +14,10 @@ terraform {
   }
 }
 
-resource "google_service_account" "terraform" {
-  account_id   = "116212672172685802399"
-  display_name = "terraform-automation"
-}
+# resource "google_service_account" "terraform" {
+#   account_id   = "116212672172685802399"
+#   display_name = "terraform-automation"
+# }
 
 # resource "google_service_account" "default" {
 #     account_id = "terraform-automation" 
@@ -79,11 +79,11 @@ resource "google_compute_instance" "server" {
     #metadata_startup_script = "curl -fsSL https://raw.githubusercontent.com/linaduko/LinOps/develop/develop/docker/service/docker.sh -o /tmp/docker.sh; sudo bash /tmp/docker.sh"
 }
 
-   service_account {
-     # Google recommends custom service accounts that have cloud-platform scope and permissions granted via IAM Roles.
-     email  = "terraform-automation@onyx-osprey-371920.iam.gserviceaccount.com"
-     scopes = ["cloud-platform"]
-   }
+#    service_account {
+#      # Google recommends custom service accounts that have cloud-platform scope and permissions granted via IAM Roles.
+#      email  = "terraform-automation@onyx-osprey-371920.iam.gserviceaccount.com"
+#      scopes = ["cloud-platform"]
+#    }
 
 
 # resource "google_compute_instance" "server-2" {
