@@ -20,7 +20,7 @@ stages:
       
 - stage: Test
   jobs:
-  - deployment: Test stage
+  - deployment: test
     displayName: Test
     pool:
        vmImage: $(vmImageName)
