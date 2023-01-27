@@ -24,8 +24,8 @@ stages:
   jobs:
   - deployment: test
     displayName: Test
-    pool:
-       vmImage: $(vmImageName)
+#    pool:
+#       vmImage: $(vmImageName)
     environment: $(environmentName)
     strategy:
       runOnce:
