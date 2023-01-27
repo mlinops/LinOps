@@ -17,10 +17,11 @@ stages:
 
     - script: echo Hello, world!
       displayName: 'Run a one-line script'
-- stage: deploy
+      
+- stage: Test
   jobs:
-  - deployment: DeployWeb
-    displayName: deploy Web App
+  - deployment: Test stage
+    displayName: Test
     pool:
        vmImage: $(vmImageName)
     environment: $(environmentName)
