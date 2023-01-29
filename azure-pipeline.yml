@@ -104,7 +104,7 @@ stages:
         displayName: 'Check DEV hosts'
         inputs:
           targetType: filePath
-          filePath: ./tests/hosts/dev.sh
+          filePath: ./tests/hosts/dev/dev.sh
 
     - job: ansible
       dependsOn: terraform
