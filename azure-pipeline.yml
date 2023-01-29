@@ -49,13 +49,18 @@ stages:
           workingDirectory: terraform
           environmentServiceNameGCP: $(provider_service_acc)
           
-      - task: Ansible@0
-        displayName: Ansible
+    - job: Ansible
+      pool:
+        name: Default
+      displayName: Ansible
+      steps:
+      - task: ms-vscs-rm.vss-services-ansible.ansible-task.Ansible@0
+        displayName: 'Run playbook'
         inputs:
-          ansibleInterface: 'agentMachine'
-          playbookPathOnAgentMachine: 'ansible/skeleton/playbook.yml'
-          inventoriesAgentMachine: 'noInventory'
+          playbookPathOnAgentMachine: ansible/skeleton/playbook.yml
           sudoEnabled: true
-          sudoUser: 'root' 
+          sudoUser: root
+
+          
 
 
