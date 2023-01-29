@@ -59,6 +59,18 @@ stages:
       displayName: Terraform
       steps:
 
+      - task: ms-devlabs.custom-terraform-tasks.custom-terraform-installer-task.TerraformInstaller@0
+        displayName: 'Install Terraform latest'
+
+      - task: ms-devlabs.custom-terraform-tasks.custom-terraform-release-task.TerraformTaskV3@3
+        displayName: 'Terraform : gcp'
+        inputs:
+          provider: gcp
+          workingDirectory: terraform
+          backendServiceGCP: 'terraform-automation'
+          backendGCPBucketName: 'linops-bucket'
+          backendGCPPrefix: terraform/state/dev.tfstate
+          
       - task: ms-devlabs.custom-terraform-tasks.custom-terraform-release-task.TerraformTaskV3@3
         displayName: Plan
         inputs:
