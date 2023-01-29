@@ -48,8 +48,14 @@ stages:
         displayName: 'Check Ansible version'
         inputs:
           targetType: filePath
-          filePath: './tests/ansible/a_version.sh'   
-  
+          filePath: './tests/ansible/a_version.sh'
+          
+      - script: |
+          sudo ansible-playbook ./develop/playbook.yml -e ansible_python_interpreter=/usr/bin/python3 --syntax-check
+          sudo ansible-playbook ./skeleton/playbook.yml -e ansible_python_interpreter=/usr/bin/python3 --syntax-check
+        workingDirectory: ansible
+        displayName: 'Command Line Script'  
+
   - stage: Dev
     displayName: Dev
     jobs:
@@ -63,7 +69,7 @@ stages:
         displayName: 'Install Terraform latest'
 
       - task: ms-devlabs.custom-terraform-tasks.custom-terraform-release-task.TerraformTaskV3@3
-        displayName: 'Terraform : gcp'
+        displayName: Terraform Init
         inputs:
           provider: gcp
           workingDirectory: terraform
@@ -72,13 +78,14 @@ stages:
           backendGCPPrefix: terraform/state/dev.tfstate
           
       - script: |
+          echo "Select terraform DEV workspace"
           terraform workspace new dev
           terraform workspace select dev
         workingDirectory: terraform
         displayName: 'Command Line Script'
           
       - task: ms-devlabs.custom-terraform-tasks.custom-terraform-release-task.TerraformTaskV3@3
-        displayName: Plan
+        displayName: Terraform Plan
         inputs:
           provider: gcp
           command: plan
@@ -86,7 +93,7 @@ stages:
           environmentServiceNameGCP: $(provider_service_acc)
 
       - task: ms-devlabs.custom-terraform-tasks.custom-terraform-release-task.TerraformTaskV3@3
-        displayName: Apply
+        displayName: Terraform Apply
         inputs:
           provider: gcp
           command: apply
@@ -94,11 +101,32 @@ stages:
           environmentServiceNameGCP: $(provider_service_acc)
 
       - task: Bash@3
-        displayName: 'Check Dev hosts'
+        displayName: 'Check DEV hosts'
         inputs:
           targetType: filePath
-          filePath: ./tests/hosts/dev.sh
+          filePath: ./tests/hosts/dev/dev.sh
 
+    - job: ansible
+      dependsOn: terraform
+      pool:
+        name: Default
+      displayName: Ansible
+      steps:
+
+      - task: ms-vscs-rm.vss-services-ansible.ansible-task.Ansible@0
+        displayName: 'Run playbook for simple-instances'
+        inputs:
+          playbookPathOnAgentMachine: ansible/skeleton/playbook.yml
+          sudoEnabled: true
+          sudoUser: root
+          failOnStdErr: false
+
+      - task: ms-vscs-rm.vss-services-ansible.ansible-task.Ansible@0
+        displayName: 'Run playbook for docker-instances'
+        inputs:
+          playbookPathOnAgentMachine: ansible/docker/playbook.yml
+          sudoEnabled: true
+          sudoUser: root
 
 
 
