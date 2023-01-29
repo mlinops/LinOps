@@ -1,6 +1,5 @@
 terraform_version_command=$(terraform version)
-terver=$(echo $terraform_version_command | head -n  1| cut -c 12-16)
-
+terver=$(echo $terraform_version_command | head -n  1 | cut -c 12-16)
 etalon_version=$(echo "1.3.7")
 
 if [ $terver == $etalon_version ]
