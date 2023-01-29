@@ -10,6 +10,46 @@ pool:
   name: Default
 
 stages:
+  - stage: Validation
+    displayName: Validation
+    jobs:
+    - job: terraform
+      pool:
+        name: Default
+      displayName: Terraform
+      steps:
+      
+      - task: ms-devlabs.custom-terraform-tasks.custom-terraform-installer-task.TerraformInstaller@0
+        displayName: 'Install Terraform latest'
+
+      - task: ms-devlabs.custom-terraform-tasks.custom-terraform-release-task.TerraformTaskV3@3
+        displayName: 'Terraform : gcp'
+        inputs:
+          provider: gcp
+          workingDirectory: terraform
+          backendServiceGCP: 'terraform-automation'
+          backendGCPBucketName: 'linops-bucket'
+          backendGCPPrefix: terraform/state/dev.tfstate
+
+      - task: ms-devlabs.custom-terraform-tasks.custom-terraform-release-task.TerraformTaskV3@3
+        displayName: 'Terraform : gcp'
+        inputs:
+          provider: gcp
+          command: validate
+          workingDirectory: terraform
+
+      - task: Bash@3
+        displayName: 'Check Terraform version'
+        inputs:
+          targetType: filePath
+          filePath: './tests/terraform/t_version.sh'
+
+      - task: Bash@3
+        displayName: 'Check Ansible version'
+        inputs:
+          targetType: filePath
+          filePath: './tests/ansible/a_version.sh'   
+  
   - stage: Dev
     displayName: Dev
     jobs:
@@ -18,14 +58,6 @@ stages:
         vmImage: $(vmImage)
       displayName: Terraform
       steps:
-      - task: ms-devlabs.custom-terraform-tasks.custom-terraform-release-task.TerraformTaskV3@3
-        displayName: Init
-        inputs:
-          provider: gcp
-          workingDirectory: terraform
-          backendServiceGCP: $(provider_service_acc)
-          backendGCPBucketName: $(bucket)
-          backendGCPPrefix: $(bucket_prefix_dev)
 
       - task: ms-devlabs.custom-terraform-tasks.custom-terraform-release-task.TerraformTaskV3@3
         displayName: Plan
@@ -48,19 +80,5 @@ stages:
           command: apply
           workingDirectory: terraform
           environmentServiceNameGCP: $(provider_service_acc)
-          
-    - job: Ansible
-      pool:
-        name: Default
-      displayName: Ansible
-      steps:
-      - task: ms-vscs-rm.vss-services-ansible.ansible-task.Ansible@0
-        displayName: 'Run playbook'
-        inputs:
-          playbookPathOnAgentMachine: ansible/skeleton/playbook.yml
-          sudoEnabled: true
-          sudoUser: root
-
-          
 
 
