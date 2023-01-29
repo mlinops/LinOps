@@ -10,41 +10,46 @@ trigger:
 
 pool:
   name: Azure Pipelines
-steps:
-- task: ms-devlabs.custom-terraform-tasks.custom-terraform-installer-task.TerraformInstaller@0
-  displayName: 'Install Terraform latest'
 
-- task: ms-devlabs.custom-terraform-tasks.custom-terraform-release-task.TerraformTaskV3@3
-  displayName: Init
-  inputs:
-    provider: gcp
-    workingDirectory: terraform
-    backendServiceGCP: 'terraform-automation'
-    backendGCPBucketName: 'linops-bucket'
-    backendGCPPrefix: terraform/state/dev.tfstate
+stages:
+  - stage: Dev
+    displayName: Dev
+    jobs:
+    - job: terraform
+      pool:
+        vmImage: ubuntu-latest
+      displayName: Terraform plan
+      steps:
+      - task: ms-devlabs.custom-terraform-tasks.custom-terraform-release-task.TerraformTaskV3@3
+        displayName: Init
+        inputs:
+          provider: gcp
+          workingDirectory: terraform
+          backendServiceGCP: 'terraform-automation'
+          backendGCPBucketName: 'linops-bucket'
+          backendGCPPrefix: terraform/state/dev.tfstate
 
-- task: ms-devlabs.custom-terraform-tasks.custom-terraform-release-task.TerraformTaskV3@3
-  displayName: Plan
-  inputs:
-    provider: gcp
-    command: plan
-    workingDirectory: terraform
-    environmentServiceNameGCP: 'terraform-automation'
+      - task: ms-devlabs.custom-terraform-tasks.custom-terraform-release-task.TerraformTaskV3@3
+        displayName: Plan
+        inputs:
+          provider: gcp
+          command: plan
+          workingDirectory: terraform
+          environmentServiceNameGCP: 'terraform-automation'
 
+      - script: |
+          terraform workspace new dev
+          terraform workspace select dev
+        workingDirectory: terraform
+        displayName: 'Command Line Script'
 
-- script: |
-   terraform workspace new dev
-   terraform workspace select dev
-  workingDirectory: terraform
-  displayName: 'Command Line Script'
-
-- task: ms-devlabs.custom-terraform-tasks.custom-terraform-release-task.TerraformTaskV3@3
-  displayName: Apply
-  inputs:
-    provider: gcp
-    command: apply
-    workingDirectory: terraform
-    environmentServiceNameGCP: 'terraform-automation'
+      - task: ms-devlabs.custom-terraform-tasks.custom-terraform-release-task.TerraformTaskV3@3
+        displayName: Apply
+        inputs:
+          provider: gcp
+          command: apply
+          workingDirectory: terraform
+          environmentServiceNameGCP: 'terraform-automation'
 
 
 
