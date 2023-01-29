@@ -49,5 +49,14 @@ stages:
           workingDirectory: terraform
           environmentServiceNameGCP: $(provider_service_acc)
           
+      - task: Ansible@0
+        displayName: Ansible
+        inputs:
+          ansibleInterface: 'agentMachine'
+          playbookPathOnAgentMachine: 'ansible/skeleton/playbook.yml'
+          inventoriesAgentMachine: 'noInventory'
+          sudoEnabled: true
+          sudoUser: 'root'
+          
 
 
