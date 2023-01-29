@@ -13,13 +13,13 @@
         ],
         "severity": "ERROR",
         "matchSpec": {
-          "name": "tags",
+          "name": "gcp-server",
           "action": "contains",
-          "value": "CostCentre"
+          "value": "dev"
         },
         "errorMessage": "The required CostCentre tag was missing",
         "relatedLinks": [
-          "http://internal.acmecorp.com/standards/aws/tagging.html"
+          "some_link"
         ]
       }
     ]   
