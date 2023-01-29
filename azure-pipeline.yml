@@ -3,7 +3,7 @@ variables:
   - name: region
     value: 'us-central1'
   - name: CommaSeparatedListofWorkspaces
-    value: "default, Dev, Test, Prod"
+    value: "default, dev, test, prod"
 
 trigger:
   branches:
