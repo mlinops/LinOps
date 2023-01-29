@@ -55,7 +55,7 @@ stages:
     jobs:
     - job: terraform
       pool:
-        vmImage: $(vmImage)
+        name: Default
       displayName: Terraform
       steps:
 
@@ -92,5 +92,13 @@ stages:
           command: apply
           workingDirectory: terraform
           environmentServiceNameGCP: $(provider_service_acc)
+
+      - task: Bash@3
+        displayName: 'Check Dev hosts'
+        inputs:
+          targetType: filePath
+          filePath: ./tests/hosts/dev.sh
+
+
 
 
