@@ -1,5 +1,5 @@
 - name: Applying roles for deply LAMP  
-  hosts: all
+  hosts: gcp-server-2
   become: yes
   roles: 
     - system
