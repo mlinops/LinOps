@@ -21,7 +21,7 @@ stages:
       - task: ms-devlabs.custom-terraform-tasks.custom-terraform-release-task.TerraformTaskV3@3
         displayName: Init
         inputs:
-          provider: $(provider)
+          provider: gcp
           workingDirectory: terraform
           backendServiceGCP: $(provider_service_acc)
           backendGCPBucketName: $(bucket)
@@ -33,7 +33,7 @@ stages:
           provider: gcp
           command: plan
           workingDirectory: terraform
-          environmentServiceNameGCP: 'terraform-automation'
+          environmentServiceNameGCP: $(provider_service_acc)
 
       - script: |
           terraform workspace new dev
@@ -47,7 +47,7 @@ stages:
           provider: gcp
           command: apply
           workingDirectory: terraform
-          environmentServiceNameGCP: 'terraform-automation'
+          environmentServiceNameGCP: $(provider_service_acc)
 
 
 
