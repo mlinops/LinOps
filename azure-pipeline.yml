@@ -1,57 +1,51 @@
 variables:
   - group: GCP
-  - name: region
-    value: 'us-central1'
-  - name: CommaSeparatedListofWorkspaces
-    value: "default, dev, test, prod"
 
 trigger:
   branches:
     include:
     - develop
     exclude:
-      - README.md
+    - README.md
 
-stages:
-  - stage: Validate
-    displayName: Validate
-    jobs:
-    - job: init
-      displayName: Terraform validate
-      pool:
-        vmImage: ubuntu-latest
-      steps:
-      - task: PowerShell@2
-        inputs:
-          targetType: 'inline'
-          script: 'terraform init -backend-config="bucket=linops-bucket" -backend-config="key=terraform/state/terraform.tfstate" -backend-config="region=$(region)"'
-          workingDirectory: 'terraform'
-        displayName: Terraform init
-      - task: Bash@3
-        inputs:
-          targetType: 'inline'
-          script: 'pip install checkov'
-        displayName: Install checkov
-      - task: PowerShell@2
-        inputs:
-          filePath: 'ListWorkspace.ps1'
-          arguments: '-CommaSeparatedListofWorkspaces "$(CommaSeparatedListofWorkspaces)"'
-        displayName: Terraform validate
-      - task: Bash@3
-        inputs:
-          targetType: 'inline'
-          workingDirectory: $(System.DefaultWorkingDirectory)
-          script: 'checkov -d . -o junitxml > scan-result.xml'
-        displayName: Checkov source code scan
-        continueOnError: true
-      - task: PublishTestResults@2
-        inputs:
-          testResultsFormat: 'JUnit'
-          searchFolder: '$(System.DefaultWorkingDirectory)'
-          testResultsFiles: '**/*scan-result.xml'
-          mergeTestResults: false
-          testRunTitle: Terraform source code scan
-          failTaskOnFailedTests: false
-          publishRunAttachments: true
-        displayName: Publish Test Result
+pool:
+  name: Azure Pipelines
+steps:
+- task: ms-devlabs.custom-terraform-tasks.custom-terraform-installer-task.TerraformInstaller@0
+  displayName: 'Install Terraform latest'
+
+- task: ms-devlabs.custom-terraform-tasks.custom-terraform-release-task.TerraformTaskV3@3
+  displayName: Init
+  inputs:
+    provider: gcp
+    workingDirectory: terraform
+    backendServiceGCP: 'terraform-automation'
+    backendGCPBucketName: 'linops-bucket'
+    backendGCPPrefix: terraform/state/dev.tfstate
+
+- task: ms-devlabs.custom-terraform-tasks.custom-terraform-release-task.TerraformTaskV3@3
+  displayName: Plan
+  inputs:
+    provider: gcp
+    command: plan
+    workingDirectory: terraform
+    environmentServiceNameGCP: 'terraform-automation'
+
+
+- script: |
+   terraform workspace new dev
+   terraform workspace select dev
+  workingDirectory: terraform
+  displayName: 'Command Line Script'
+
+- task: ms-devlabs.custom-terraform-tasks.custom-terraform-release-task.TerraformTaskV3@3
+  displayName: Apply
+  inputs:
+    provider: gcp
+    command: apply
+    workingDirectory: terraform
+    environmentServiceNameGCP: 'terraform-automation'
+
+
+
 
