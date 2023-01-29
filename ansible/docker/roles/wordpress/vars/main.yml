@@ -1,0 +1,11 @@
+---
+db_data: "mysql"
+db_name: "wordpress"
+db_root_pass: "Aa123456"
+db_pass: "Aa123456"
+db_port: "3306"
+db_user: "sadmin"
+
+wp_data: "wordpress"
+
+

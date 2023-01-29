@@ -1,0 +1,9 @@
+- name: Applying roles for deply LAMP  
+  hosts: all
+  become: yes
+  roles: 
+    - system
+    - apache
+    - php
+    - mysql
+    - wordpress

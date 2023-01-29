@@ -1,0 +1,6 @@
+---
+#MySQL start settings
+mysql_root_password: "Aa123456"
+mysql_db: "wordpress_db"
+mysql_user: "sadmin"
+mysql_password: "Aa123456"
