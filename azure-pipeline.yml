@@ -12,6 +12,13 @@ steps:
   displayName: 'Terraform : gcp'
   inputs:
     provider: gcp
+    command: destroy
+    environmentServiceNameGCP: 'terraform-automation'
+    
+- task: ms-devlabs.custom-terraform-tasks.custom-terraform-release-task.TerraformTaskV3@3
+  displayName: 'Terraform : gcp'
+  inputs:
+    provider: gcp
     workingDirectory: terraform
     backendServiceGCP: 'terraform-automation'
     backendGCPBucketName: 'linops-bucket'
