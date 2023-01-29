@@ -1,5 +1,5 @@
 - name: Applying roles for deploy Docker  
-#  hosts: devdocker
+  hosts: devdocker
   become: yes
   roles: 
     - docker
