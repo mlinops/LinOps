@@ -50,8 +50,8 @@ stages:
           targetType: filePath
           filePath: './tests/ansible/a_version.sh'   
   
-  - stage: Dev
-    displayName: Dev
+  - stage: Develop
+    displayName: Develop
     jobs:
     - job: terraform
       pool:
@@ -92,5 +92,19 @@ stages:
           command: apply
           workingDirectory: terraform
           environmentServiceNameGCP: $(provider_service_acc)
+
+    - job: host-check
+      pool:
+        vmImage: $(vmImage)
+      displayName: Terraform
+      steps:
+
+      - task: Bash@3
+        displayName: 'Check Dev hosts'
+        inputs:
+          targetType: filePath
+          filePath: ./tests/hosts/dev.sh
+
+
 
 
