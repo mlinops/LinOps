@@ -15,9 +15,7 @@ terraform {
   }
 }
 
-#tfsec:ignore:kms_key_self_link 
-#tfsec:ignore:block-project-ssh-keys
-
+#tfsec:ignore:block-project-ssh-keys tfsec:ignore:kms_key_self_link
 resource "google_compute_instance" "server" {
     name            = "gcp-server-1-${terraform.workspace}"
     machine_type    = "e2-micro"
@@ -26,7 +24,7 @@ resource "google_compute_instance" "server" {
         enable_vtpm = true
         enable_integrity_monitoring = true
     }
-
+ 
     boot_disk {
         initialize_params {
             image = "ubuntu-2004-lts"
@@ -36,6 +34,7 @@ resource "google_compute_instance" "server" {
         network_interface {
             network = "default"
         }
+
 
     metadata = {
         block-project-ssh-keys = false
