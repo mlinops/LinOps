@@ -1,0 +1,6 @@
+- name: Applying roles for deploy Docker  
+  hosts: all
+  become: yes
+  roles: 
+    - docker
+    - wordpress

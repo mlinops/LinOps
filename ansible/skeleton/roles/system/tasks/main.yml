@@ -6,4 +6,3 @@
   apt: name={{ item }} update_cache=yes state=latest
   loop: ['apache2', 'mysql-server', 'python3-pymysql', 'php', 'php-mysql', 'libapache2-mod-php']
 
-#

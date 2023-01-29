@@ -1,0 +1,29 @@
+---
+- name: DataBase setup
+  docker_container:
+    image: mysql:8.0
+    name: mysql
+    volumes:
+    - "{{db_data}}:/var/lib/mysql"
+    env:
+      MYSQL_ROOT_PASSWORD: "{{db_root_pass}}"
+      MYSQL_PASSWORD: "{{db_pass}}"
+      MYSQL_DATABASE: "{{db_name}}"
+      MYSQL_USER: "{{db_user}}"
+
+- name: Deploy WordPress
+  docker_container:
+    image: wordpress
+    name: wordpress
+    restart_policy: always
+    ports:
+    - "8080:80"
+    links:
+    - "{{db_data}}:/var/lib/mysql"
+    volumes:
+    - "{{wp_data}}:/var/www/html"
+    env:
+      WORDPRESS_DB_PASSWORD: "{{db_pass}}"
+      WORDPRESS_DB_NAME: "{{db_name}}"
+      WORDPRESS_DB_USER: "{{db_user}}"
+      WORDPRESS_DB_HOST: "{{db_data}}:{{db_port}}"
