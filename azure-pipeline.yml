@@ -50,8 +50,8 @@ stages:
           targetType: filePath
           filePath: './tests/ansible/a_version.sh'   
   
-  - stage: Develop
-    displayName: Develop
+  - stage: Dev
+    displayName: Dev
     jobs:
     - job: terraform
       pool:
