@@ -9,3 +9,5 @@ else
 echo Terraform version NOT OK
 exit 1
 fi
+
+
