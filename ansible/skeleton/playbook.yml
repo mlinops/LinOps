@@ -1,5 +1,5 @@
 - name: Applying roles for deply LAMP  
-  hosts: devsimple
+  hosts: simple
   become: yes
   roles: 
     - system
