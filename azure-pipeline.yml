@@ -15,13 +15,13 @@ stages:
     jobs:
     - job: terraform
       pool:
-        vmImage: ubuntu-latest
+        vmImage: $(vmImage)
       displayName: Terraform plan
       steps:
       - task: ms-devlabs.custom-terraform-tasks.custom-terraform-release-task.TerraformTaskV3@3
         displayName: Init
         inputs:
-          provider: gcp
+          provider: $(provider)
           workingDirectory: terraform
           backendServiceGCP: 'terraform-automation'
           backendGCPBucketName: 'linops-bucket'
