@@ -55,7 +55,7 @@ stages:
     jobs:
     - job: terraform
       pool:
-        vmImage: $(vmImage)
+        name: Default
       displayName: Terraform
       steps:
 
@@ -95,7 +95,7 @@ stages:
 
     - job: host-check
       pool:
-        vmImage: $(vmImage)
+        name: Default
       displayName: Terraform
       steps:
 
