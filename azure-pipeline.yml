@@ -5,8 +5,6 @@ trigger:
   branches:
     include:
     - develop
-    exclude:
-    - README.md
 
 pool:
   name: Azure Pipelines
