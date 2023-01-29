@@ -22,7 +22,7 @@ steps:
     workingDirectory: terraform
     backendServiceGCP: 'terraform-automation'
     backendGCPBucketName: 'linops-bucket'
-    backendGCPPrefix: terraform/state/dev.tfstate/dev.tfstate
+    backendGCPPrefix: terraform/state/dev.tfstate
 
 - task: ms-devlabs.custom-terraform-tasks.custom-terraform-release-task.TerraformTaskV3@3
   displayName: 'Terraform : gcp'
