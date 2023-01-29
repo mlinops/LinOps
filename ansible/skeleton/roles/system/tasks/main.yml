@@ -1,6 +1,6 @@
 ---
-- name: Install prerequisite
-  apt: name=aptitude update_cache=yes state=latest force_apt_get=yes
+# - name: Install prerequisite
+#   apt: name=aptitude update_cache=yes state=latest force_apt_get=yes
   
 - name: Install LAMP Packages
   apt: name={{ item }} update_cache=yes state=latest

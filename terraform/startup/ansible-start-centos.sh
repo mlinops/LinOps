@@ -1,5 +1,6 @@
 # Update the packet index in the Linux system
 #sudo yum -y update
+sudo yum install -y python3 
 
 # Set up SSH for ansible:
 sudo ssh-keygen -f /root/.ssh/id_rsa -q -N ""
