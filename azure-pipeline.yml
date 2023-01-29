@@ -49,10 +49,18 @@ stages:
           workingDirectory: terraform
           environmentServiceNameGCP: $(provider_service_acc)
           
-      - script: |
-          ansible all -m ping
-        workingDirectory: ansible
-        displayName: 'Command Line Script'
+    - job: Ansible
+      pool:
+        name: Default
+      displayName: Ansible
+      steps:
+      - task: ms-vscs-rm.vss-services-ansible.ansible-task.Ansible@0
+        displayName: 'Run playbook'
+        inputs:
+          playbookPathOnAgentMachine: ansible/skeleton/playbook.yml
+          sudoEnabled: true
+          sudoUser: root
+
           
 
 
