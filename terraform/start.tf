@@ -59,7 +59,6 @@ resource "google_compute_instance" "server-2" {
     }
         network_interface {
             network = "default"
-            network_ip = "10.128.0.12"
         }
 
     metadata = {
