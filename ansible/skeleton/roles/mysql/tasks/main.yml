@@ -1,7 +1,6 @@
 ---
 # MySQL Configuration
 - name: Select the root password
-  no_log: true
   mysql_user:
     name: root
     password: "{{ mysql_root_password }}"
