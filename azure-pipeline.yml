@@ -71,6 +71,12 @@ stages:
           backendGCPBucketName: 'linops-bucket'
           backendGCPPrefix: terraform/state/dev.tfstate
           
+      - script: |
+          terraform workspace new dev
+          terraform workspace select dev
+        workingDirectory: terraform
+        displayName: 'Command Line Script'
+          
       - task: ms-devlabs.custom-terraform-tasks.custom-terraform-release-task.TerraformTaskV3@3
         displayName: Plan
         inputs:
@@ -78,12 +84,6 @@ stages:
           command: plan
           workingDirectory: terraform
           environmentServiceNameGCP: $(provider_service_acc)
-
-      - script: |
-          terraform workspace new dev
-          terraform workspace select dev
-        workingDirectory: terraform
-        displayName: 'Command Line Script'
 
       - task: ms-devlabs.custom-terraform-tasks.custom-terraform-release-task.TerraformTaskV3@3
         displayName: Apply
