@@ -49,6 +49,45 @@ stages:
           workingDirectory: terraform
           environmentServiceNameGCP: $(provider_service_acc)
 
+  - stage: Test 
+    displayName: Test
+    jobs:
+    - job: terraform
+      pool:
+        vmImage: $(vmImage)
+      displayName: Terraform
+      steps:
+      - task: ms-devlabs.custom-terraform-tasks.custom-terraform-release-task.TerraformTaskV3@3
+        displayName: Init
+        inputs:
+          provider: gcp
+          workingDirectory: terraform
+          backendServiceGCP: $(provider_service_acc)
+          backendGCPBucketName: $(bucket)
+          backendGCPPrefix: $(bucket_prefix_test)
+
+      - task: ms-devlabs.custom-terraform-tasks.custom-terraform-release-task.TerraformTaskV3@3
+        displayName: Plan
+        inputs:
+          provider: gcp
+          command: plan
+          workingDirectory: terraform
+          environmentServiceNameGCP: $(provider_service_acc)
+
+      - script: |
+          terraform workspace new test
+          terraform workspace select test
+        workingDirectory: terraform
+        displayName: 'Command Line Script'
+
+      - task: ms-devlabs.custom-terraform-tasks.custom-terraform-release-task.TerraformTaskV3@3
+        displayName: Apply
+        inputs:
+          provider: gcp
+          command: apply
+          workingDirectory: terraform
+          environmentServiceNameGCP: $(provider_service_acc)          
+
 
 
 
