@@ -15,7 +15,7 @@ terraform {
   }
 }
 
-#tfsec:ignore:block-project-ssh-keys tfsec:ignore:kms_key_self_link
+#tfsec:ignore:google-compute-disk-encryption-customer-keys
 resource "google_compute_instance" "server" {
     name            = "gcp-server-1-${terraform.workspace}"
     machine_type    = "e2-micro"
