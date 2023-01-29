@@ -93,12 +93,6 @@ stages:
           workingDirectory: terraform
           environmentServiceNameGCP: $(provider_service_acc)
 
-    - job: hosts
-      pool:
-        name: Default
-      displayName: Hosts
-      steps:
-
       - task: Bash@3
         displayName: 'Check Dev hosts'
         inputs:
