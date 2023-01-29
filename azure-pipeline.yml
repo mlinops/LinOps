@@ -1,0 +1,56 @@
+variables:
+  - group: GCP
+
+trigger:
+  branches:
+    include:
+    - develop
+
+pool:
+  name: Azure Pipelines
+
+stages:
+  - stage: Dev
+    displayName: Dev
+    jobs:
+    - job: terraform
+      pool:
+        vmImage: $(vmImage)
+      displayName: Terraform
+      steps:
+      - task: ms-devlabs.custom-terraform-tasks.custom-terraform-release-task.TerraformTaskV3@3
+        displayName: Init
+        inputs:
+          provider: gcp
+          workingDirectory: terraform
+          backendServiceGCP: $(provider_service_acc)
+          backendGCPBucketName: $(bucket)
+          backendGCPPrefix: $(bucket_prefix_dev)
+
+      - task: ms-devlabs.custom-terraform-tasks.custom-terraform-release-task.TerraformTaskV3@3
+        displayName: Plan
+        inputs:
+          provider: gcp
+          command: plan
+          workingDirectory: terraform
+          environmentServiceNameGCP: $(provider_service_acc)
+
+      - script: |
+          terraform workspace new dev
+          terraform workspace select dev
+        workingDirectory: terraform
+        displayName: 'Command Line Script'
+
+      - task: ms-devlabs.custom-terraform-tasks.custom-terraform-release-task.TerraformTaskV3@3
+        displayName: Apply
+        inputs:
+          provider: gcp
+          command: apply
+          workingDirectory: terraform
+          environmentServiceNameGCP: $(provider_service_acc)
+
+      
+
+
+
+
