@@ -3,7 +3,7 @@
 - name: Select the root password
   mysql_user:
     name: root
-    password: "{{ mysql_root_password }}"
+    password: "Aa123456"
     login_unix_socket: /var/run/mysqld/mysqld.sock
 - name: Remove all anonymous user accounts
   mysql_user:
@@ -19,7 +19,6 @@
     login_user: root
     login_password: "{{ mysql_root_password }}"
   
-
 - name: Creates database for WordPress site
   mysql_db:
     name: "{{ mysql_db }}"
