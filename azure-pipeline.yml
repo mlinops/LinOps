@@ -7,7 +7,7 @@ trigger:
     - develop
 
 pool:
-  name: Azure Pipelines
+  name: Default
 
 stages:
   - stage: Dev
@@ -48,8 +48,15 @@ stages:
           command: apply
           workingDirectory: terraform
           environmentServiceNameGCP: $(provider_service_acc)
-
-      
+          
+      - task: Ansible@0
+        displayName: Ansible
+        inputs:
+          ansibleInterface: 'agentMachine'
+          playbookPathOnAgentMachine: 'ansible/skeleton/playbook.yml'
+          inventoriesAgentMachine: 'noInventory'
+          sudoEnabled: true
+          sudoUser: 'root' 
 
 
 
