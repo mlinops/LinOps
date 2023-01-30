@@ -88,7 +88,7 @@ stages:
           provider: gcp
           command: plan
           workingDirectory: terraform
-          environmentServiceNameGCP: $(provider_service_acc)
+          environmentServiceNameGCP: 'terraform-automation'
 
       - task: ms-devlabs.custom-terraform-tasks.custom-terraform-release-task.TerraformTaskV3@3
         displayName: Terraform Apply
@@ -96,7 +96,7 @@ stages:
           provider: gcp
           command: apply
           workingDirectory: terraform
-          environmentServiceNameGCP: $(provider_service_acc)
+          environmentServiceNameGCP: 'terraform-automation'
 
       - task: Bash@3
         displayName: 'Check DEV hosts'
