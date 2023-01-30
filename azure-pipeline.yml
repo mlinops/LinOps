@@ -1,6 +1,3 @@
-variables:
-  - group: GCP
-
 trigger:
   branches:
     include:
@@ -127,6 +124,3 @@ stages:
           playbookPathOnAgentMachine: ansible/docker/playbook.yml
           sudoEnabled: true
           sudoUser: root
-
-
-
