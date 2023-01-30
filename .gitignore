@@ -30,4 +30,3 @@ override.tf.json
 
 .terraform.lock.hcl
 test.json
-azure-pipeline.yml
