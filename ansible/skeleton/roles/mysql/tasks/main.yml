@@ -5,9 +5,8 @@
     name: root
     password: "{{ mysql_root_password }}"
     state: present
-    login_unix_socket: /var/run/mysqld/mysqld.sock
-    register: command_result
-    failed_when: "'FAILED' in command_result.stderr"
+#    login_unix_socket: /var/run/mysqld/mysqld.sock
+  ignore_errors: True
 
 - name: Remove all anonymous user accounts
   mysql_user:
