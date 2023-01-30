@@ -122,14 +122,6 @@ stages:
           failOnStdErr: false
 
       - task: ms-vscs-rm.vss-services-ansible.ansible-task.Ansible@0
-        displayName: 'Run playbook for simple-instances'
-        inputs:
-          playbookPathOnAgentMachine: ansible/skeleton/playbook-centos.yml
-          sudoEnabled: true
-          sudoUser: root
-          failOnStdErr: false
-
-      - task: ms-vscs-rm.vss-services-ansible.ansible-task.Ansible@0
         displayName: 'Run playbook for docker-instances'
         inputs:
           playbookPathOnAgentMachine: ansible/docker/playbook.yml
