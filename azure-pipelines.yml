@@ -125,6 +125,10 @@ stages:
           sudoEnabled: true
           sudoUser: root
       
+    - job: test
+      pool:
+      name: Azure Pipelines
+      steps:
       - task: ShaykiAbramczyk.CreatePullRequest.CreatePullRequest.CreatePullRequest@1
         displayName: 'Pull Request'
         inputs:
