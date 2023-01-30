@@ -56,7 +56,7 @@ resource "google_compute_instance" "server-2" {
 
     boot_disk {
         initialize_params {
-            image = "centos-7-v20200403"
+            image = "centos-stream-8-v20221206"
         }
     }
         network_interface {
