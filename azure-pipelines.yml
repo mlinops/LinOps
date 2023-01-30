@@ -75,7 +75,7 @@ stages:
           backendGCPPrefix: terraform/state/test.tfstate
           
       - script: |
-          echo "Select terraform DEV workspace"
+          echo "Select terraform TEST workspace"
           terraform workspace new test
           terraform workspace select test
         workingDirectory: terraform
@@ -96,12 +96,6 @@ stages:
           command: apply
           workingDirectory: terraform
           environmentServiceNameGCP: 'terraform-automation'
-
-      - task: Bash@3
-        displayName: 'Check DEV hosts'
-        inputs:
-          targetType: filePath
-          filePath: ./tests/hosts/dev/dev.sh
 
     - job: ansible
       dependsOn: terraform
