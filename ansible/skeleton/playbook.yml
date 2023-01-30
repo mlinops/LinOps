@@ -1,5 +1,5 @@
-- name: Applying roles for deply LAMP  
-  hosts: simple
+- name: Applying roles for deploy LAMP
+  hosts: gcp-server-1-dev
   become: yes
   roles: 
     - system
@@ -7,3 +7,4 @@
     - php
     - mysql
     - wordpress
+

@@ -1,0 +1,9 @@
+- name: Applying roles for deploy LAMP on centos
+  hosts: gcp-server-2
+  become: yes
+  roles: 
+    - c-system
+    - apache
+    - php
+    - mysql
+    - wordpress

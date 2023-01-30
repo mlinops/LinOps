@@ -1,3 +1,5 @@
+timeout 30
+
 if ping -c 1 gcp-server-1-dev &> /dev/null
 then
   echo "SUCCESS"
