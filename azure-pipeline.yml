@@ -124,6 +124,21 @@ stages:
           playbookPathOnAgentMachine: ansible/docker/playbook.yml
           sudoEnabled: true
           sudoUser: root
+          
+      - job: test
+        pool:
+        name: Azure Pipelines
+        steps:
+        
+        - task: ShaykiAbramczyk.CreatePullRequest.CreatePullRequest.CreatePullRequest@1
+          displayName: 'Pull Request'
+          inputs:
+            repoType: GitHub
+            githubEndpoint: linaduko
+            sourceBranch: develop
+            targetBranch: test
+            title: pull into test
+            githubAutoMerge: true
 
 
 
