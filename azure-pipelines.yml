@@ -54,6 +54,7 @@ stages:
         displayName: 'Command Line Script'  
 
   - stage: Test
+    dependsOn: Validation
     displayName: Test
     jobs:
     - job: terraform
