@@ -1,0 +1,8 @@
+---
+# Database system variables
+mysqlservice: mysqld
+mysql_port: 3306
+dbuser: webapp
+dbname: ANSAP01
+upassword: Bond@007
+masterpassword: MySQL@007

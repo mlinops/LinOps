@@ -1,10 +1,12 @@
 ---
-# MySQL Configuration
-- name: Select the root password
-  mysql_user:
-    name: root
-    password: "{{ mysql_root_password }}"
-    login_unix_socket: /var/run/mysqld/mysqld.sock
+#MySQL Configuration
+# - name: Select the root password
+#   mysql_user:
+#     name: root
+#     password: "{{ mysql_root_password }}"
+#     state: present
+#     login_unix_socket: /var/run/mysqld/mysqld.sock
+
 - name: Remove all anonymous user accounts
   mysql_user:
     name: ''
@@ -12,6 +14,7 @@
     state: absent
     login_user: root
     login_password: "{{ mysql_root_password }}"
+
 - name: Remove the MySQL test database
   mysql_db:
     name: test
@@ -19,13 +22,13 @@
     login_user: root
     login_password: "{{ mysql_root_password }}"
   
-
 - name: Creates database for WordPress site
   mysql_db:
     name: "{{ mysql_db }}"
     state: present
     login_user: root
     login_password: "{{ mysql_root_password }}"
+    login_unix_socket: /var/run/mysqld/mysqld.sock
 
 - name: Create MySQL user for WordPress
   mysql_user:

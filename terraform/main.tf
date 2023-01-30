@@ -1,5 +1,6 @@
 #The Terraform Google provider is a plugin that allows Terraform to manage resources on Google Cloud Platform. 
 
+
 provider "google" {
     #credentials = file("test.json")
     project     = "onyx-osprey-371920"
@@ -22,7 +23,7 @@ resource "google_compute_instance" "server" {
         enable_vtpm = true
         enable_integrity_monitoring = true
     }
-
+ 
     boot_disk {
         initialize_params {
             image = "ubuntu-2004-lts"
@@ -32,6 +33,7 @@ resource "google_compute_instance" "server" {
         network_interface {
             network = "default"
         }
+
 
     metadata = {
         block-project-ssh-keys = false
@@ -54,12 +56,11 @@ resource "google_compute_instance" "server-2" {
 
     boot_disk {
         initialize_params {
-            image = "centos-7-v20200403"
+            image = "centos-stream-8-v20221206"
         }
     }
         network_interface {
             network = "default"
-            network_ip = "10.128.0.12"
         }
 
     metadata = {

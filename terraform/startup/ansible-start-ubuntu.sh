@@ -1,8 +1,8 @@
 # Update the packet index in the Linux system
 sudo apt update
+sudo apt install -y python3 aptitude subversion git
 
 # Installation of the necessary packages
-#sudo apt-get -y install ansible subversion
 
 # Set up SSH for ansible:
 sudo ssh-keygen -f /root/.ssh/id_rsa -q -N ""

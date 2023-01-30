@@ -1,0 +1,4 @@
+bucket: 'linops-bucket'
+bucket_prefix_dev: 'terraform/state/dev.tfstate'
+provider: 'gcp'
+provider_service_acc: 'terraform-automation'
