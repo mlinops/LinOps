@@ -53,8 +53,8 @@ stages:
         workingDirectory: ansible
         displayName: 'Command Line Script'  
 
-  - stage: Test
-    displayName: Test
+  - stage: Testing
+    displayName: Testing
     jobs:
     - job: terraform
       pool:
