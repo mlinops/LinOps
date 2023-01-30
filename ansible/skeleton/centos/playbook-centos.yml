@@ -1,0 +1,8 @@
+- name: Apply for common configuration to all the nodes
+  hosts: gcp-server-2-dev
+  become: yes
+
+  roles:
+   - mysql
+   - web
+   - wordpress
