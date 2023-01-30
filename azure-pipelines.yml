@@ -72,7 +72,7 @@ stages:
           workingDirectory: terraform
           backendServiceGCP: 'terraform-automation'
           backendGCPBucketName: 'linops-bucket'
-          backendGCPPrefix: terraform/state/dev.tfstate
+          backendGCPPrefix: terraform/state/test.tfstate
           
       - script: |
           echo "Select terraform DEV workspace"
