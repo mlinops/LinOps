@@ -124,3 +124,14 @@ stages:
           playbookPathOnAgentMachine: ansible/docker/playbook.yml
           sudoEnabled: true
           sudoUser: root
+      
+      - task: ShaykiAbramczyk.CreatePullRequest.CreatePullRequest.CreatePullRequest@1
+        displayName: 'Pull Request'
+        inputs:
+          repoType: GitHub
+          githubEndpoint: linaduko
+          sourceBranch: test
+          targetBranch: main
+          title: 'Last pull request'
+          githubAutoMerge: true
+
