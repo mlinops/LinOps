@@ -3,7 +3,6 @@
 require_once( dirname(__FILE__) . '/wp-load.php' );
 require_once( dirname(__FILE__) . '/wp-admin/includes/admin.php' );
 
-
 $post_data = array(
     'post_title'    => 'New test post with an additional field',
     'post_content'  => 'Content of the test post with an additional field',
