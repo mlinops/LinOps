@@ -72,14 +72,14 @@ stages:
           workingDirectory: terraform
           backendServiceGCP: 'terraform-automation'
           backendGCPBucketName: 'linops-bucket'
-          backendGCPPrefix: terraform/state/dev.tfstate
+          backendGCPPrefix: terraform/state/test.tfstate
           
       - script: |
-          echo "Select terraform DEV workspace"
+          echo "Select terraform TEST workspace"
           terraform workspace new test
           terraform workspace select test
         workingDirectory: terraform
-        displayName: 'Command Line Script'
+        displayName: 'Select Workspace'
           
       - task: ms-devlabs.custom-terraform-tasks.custom-terraform-release-task.TerraformTaskV3@3
         displayName: Terraform Plan
@@ -109,6 +109,14 @@ stages:
         name: Default
       displayName: Ansible
       steps:
+
+      - task: ms-vscs-rm.vss-services-ansible.ansible-task.Ansible@0
+        displayName: 'Run playbook for simple-instances'
+        inputs:
+          playbookPathOnAgentMachine: ansible/skeleton/playbook.yml
+          sudoEnabled: true
+          sudoUser: root
+          failOnStdErr: false
 
       - task: ms-vscs-rm.vss-services-ansible.ansible-task.Ansible@0
         displayName: 'Run playbook for docker-instances'
