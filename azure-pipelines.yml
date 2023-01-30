@@ -1,0 +1,118 @@
+trigger:
+  branches:
+    include:
+    - test
+
+pool:
+  name: Default
+
+stages:
+  - stage: Validation
+    displayName: Validation
+    jobs:
+    - job: terraform
+      pool:
+        name: Default
+      displayName: Terraform
+      steps:
+      
+      - task: ms-devlabs.custom-terraform-tasks.custom-terraform-installer-task.TerraformInstaller@0
+        displayName: 'Install Terraform latest'
+
+      - task: ms-devlabs.custom-terraform-tasks.custom-terraform-release-task.TerraformTaskV3@3
+        displayName: 'Terraform : gcp'
+        inputs:
+          provider: gcp
+          workingDirectory: terraform
+          backendServiceGCP: 'terraform-automation'
+          backendGCPBucketName: 'linops-bucket'
+          backendGCPPrefix: terraform/state/test.tfstate
+
+      - task: ms-devlabs.custom-terraform-tasks.custom-terraform-release-task.TerraformTaskV3@3
+        displayName: 'Terraform : gcp'
+        inputs:
+          provider: gcp
+          command: validate
+          workingDirectory: terraform
+
+      - task: Bash@3
+        displayName: 'Check Terraform version'
+        inputs:
+          targetType: filePath
+          filePath: './tests/terraform/t_version.sh'
+
+      - task: Bash@3
+        displayName: 'Check Ansible version'
+        inputs:
+          targetType: filePath
+          filePath: './tests/ansible/a_version.sh'
+          
+      - script: |
+          sudo ansible-playbook ./develop/playbook.yml -e ansible_python_interpreter=/usr/bin/python3 --syntax-check
+          sudo ansible-playbook ./skeleton/playbook.yml -e ansible_python_interpreter=/usr/bin/python3 --syntax-check
+        workingDirectory: ansible
+        displayName: 'Command Line Script'  
+
+  - stage: Test
+    displayName: Test
+    jobs:
+    - job: terraform
+      pool:
+        name: Default
+      displayName: Terraform
+      steps:
+
+      - task: ms-devlabs.custom-terraform-tasks.custom-terraform-installer-task.TerraformInstaller@0
+        displayName: 'Install Terraform latest'
+
+      - task: ms-devlabs.custom-terraform-tasks.custom-terraform-release-task.TerraformTaskV3@3
+        displayName: Terraform Init
+        inputs:
+          provider: gcp
+          workingDirectory: terraform
+          backendServiceGCP: 'terraform-automation'
+          backendGCPBucketName: 'linops-bucket'
+          backendGCPPrefix: terraform/state/dev.tfstate
+          
+      - script: |
+          echo "Select terraform DEV workspace"
+          terraform workspace new test
+          terraform workspace select test
+        workingDirectory: terraform
+        displayName: 'Command Line Script'
+          
+      - task: ms-devlabs.custom-terraform-tasks.custom-terraform-release-task.TerraformTaskV3@3
+        displayName: Terraform Plan
+        inputs:
+          provider: gcp
+          command: plan
+          workingDirectory: terraform
+          environmentServiceNameGCP: $(provider_service_acc)
+
+      - task: ms-devlabs.custom-terraform-tasks.custom-terraform-release-task.TerraformTaskV3@3
+        displayName: Terraform Apply
+        inputs:
+          provider: gcp
+          command: apply
+          workingDirectory: terraform
+          environmentServiceNameGCP: $(provider_service_acc)
+
+      - task: Bash@3
+        displayName: 'Check DEV hosts'
+        inputs:
+          targetType: filePath
+          filePath: ./tests/hosts/dev/dev.sh
+
+    - job: ansible
+      dependsOn: terraform
+      pool:
+        name: Default
+      displayName: Ansible
+      steps:
+
+      - task: ms-vscs-rm.vss-services-ansible.ansible-task.Ansible@0
+        displayName: 'Run playbook for docker-instances'
+        inputs:
+          playbookPathOnAgentMachine: ansible/docker/playbook.yml
+          sudoEnabled: true
+          sudoUser: root
