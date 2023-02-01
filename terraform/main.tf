@@ -36,84 +36,82 @@ resource "google_compute_instance" "server_1" {
     metadata = {
         block-project-ssh-keys = false
         enable-oslogin: true
-        serial-port-enable: false
-        ssh-keys = "${var.gce_ssh_ansible_user}:${file(var.gce_ssh_pub_key_file_ansible)} \n ${var.gce_ssh_default_user}:${file(var.gce_ssh_pub_key_file_default)}"
+        serial-port-enable: true
+        ssh-keys = "${var.ssh_user_1}:${var.ssh_key_1} \n ${var.ssh_user_2}:${var.ssh_key_2}"
     }
 
-    metadata_startup_script = file("./startup/${terraform.workspace}/metadata-start-ubuntu.sh")
-    
+    metadata_startup_script = file("./startup/${terraform.workspace}/metadata-ubuntu.sh")
+
     lifecycle {
         #create_before_destroy = true
-        prevent_destroy = false
+        #prevent_destroy = false
     }
 }
 
-# resource "google_compute_instance" "server_2" {
-#     name = "${terraform.workspace}-gcp-server-2"
-#     machine_type = var.machine_type
+resource "google_compute_instance" "server_2" {
+    name = "${terraform.workspace}-gcp-server-2"
+    machine_type = var.machine_type
 
-#     shielded_instance_config {
-#         enable_vtpm = true
-#         enable_integrity_monitoring = true
-#     }
+    shielded_instance_config {
+        enable_vtpm = true
+        enable_integrity_monitoring = true
+    }
 
-#     boot_disk {
-#         initialize_params {
-#             image = var.centos
-#         }
-#     }
-#         network_interface {
-#             network = "default"
-#             network_ip = "10.128.0.6"
-#         }
+    boot_disk {
+        initialize_params {
+            image = var.centos
+        }
+    }
+        network_interface {
+            network = "default"
+        }
 
-#     metadata = {
-#         block-project-ssh-keys = false
-#         enable-oslogin: true
-#         serial-port-enable: false
-#         ssh-keys = "${var.gce_ssh_ansible_user}:${file(var.gce_ssh_pub_key_file_ansible)} \n ${var.gce_ssh_default_user}:${file(var.gce_ssh_pub_key_file_default)}"
-#     }
+    metadata = {
+        block-project-ssh-keys = false
+        enable-oslogin: true
+        serial-port-enable: true
+        ssh-keys = "${var.ssh_user_1}:${var.ssh_key_1} \n ${var.ssh_user_2}:${var.ssh_key_2}"
+    }
 
-#     metadata_startup_script = file("./startup/ansible-start-centos.sh")
+    metadata_startup_script = file("./startup/${terraform.workspace}/metadata-centos.sh")
     
-#     lifecycle {
-#         #create_before_destroy = true
-#         prevent_destroy = true
-#     }
-# }
+    lifecycle {
+        #create_before_destroy = true
+        #prevent_destroy = true
+    }
+}
 
-# resource "google_compute_instance" "server_3" {
-#     name = "${terraform.workspace}-gcp-server-3"
-#     machine_type = var.machine_type
+resource "google_compute_instance" "server_3" {
+    name = "${terraform.workspace}-gcp-server-3"
+    machine_type = var.machine_type
 
-#     shielded_instance_config {
-#         enable_vtpm = true
-#         enable_integrity_monitoring = true
-#     }
+    shielded_instance_config {
+        enable_vtpm = true
+        enable_integrity_monitoring = true
+    }
 
-#     boot_disk {
-#         initialize_params {
-#             image = var.ubuntu
-#         }
-#     }
+    boot_disk {
+        initialize_params {
+            image = var.ubuntu
+        }
+    }
 
-#         network_interface {
-#             network = "default"
-#             network_ip = "10.128.0.7"
-#         }
+        network_interface {
+            network = "default"
+        }
 
-#     metadata = {
-#         block-project-ssh-keys = false
-#         enable-oslogin: true
-#         serial-port-enable: false
-#         ssh-keys = "${var.gce_ssh_ansible_user}:${file(var.gce_ssh_pub_key_file_ansible)} \n ${var.gce_ssh_default_user}:${file(var.gce_ssh_pub_key_file_default)}"
-#     }
+    metadata = {
+        block-project-ssh-keys = false
+        enable-oslogin: true
+        serial-port-enable: true
+        ssh-keys = "${var.ssh_user_1}:${var.ssh_key_1} \n ${var.ssh_user_2}:${var.ssh_key_2}"
+    }
     
-#     metadata_startup_script = file("./startup/ansible-start-ubuntu.sh")
+    metadata_startup_script = file("./startup/${terraform.workspace}/metadata-ubuntu.sh")
 
-#     lifecycle {
-#         #create_before_destroy = true
-#         prevent_destroy = false
-#     }
-# }
+    lifecycle {
+        #create_before_destroy = true
+        #prevent_destroy = false
+    }
+}
 

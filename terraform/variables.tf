@@ -28,7 +28,7 @@ variable "machine_type" {
 variable "centos" {
   description = "Selecting centos image"
   type = string
-  default = "centos-stream-8-v20221206"  
+  default = "centos-7-v20221206"  
 }
 
 variable "ubuntu" {
@@ -41,24 +41,22 @@ variable "ubuntu" {
 
 ### SSH
 
-variable "gce_ssh_ansible_user" {
+variable "ssh_user_1" {
+  type = string
+  default = "lina-infobox"
+}
+
+variable "ssh_key_1" {
+  type = string
+}
+
+variable "ssh_user_2" {
   type = string
   default = "root"
 }
 
-variable "gce_ssh_default_user" {
+variable "ssh_key_2" {
   type = string
-  default = "lina_infobox"
-}
-
-variable "gce_ssh_pub_key_file_default" {
-  type = string
-  default = "id_rsa_default.pub"
-}
-
-variable "gce_ssh_pub_key_file_ansible" {
-  type = string
-  default = "id_rsa_ansible.pub"
 }
 
 
