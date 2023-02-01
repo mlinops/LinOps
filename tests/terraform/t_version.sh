@@ -1,3 +1,5 @@
+#!/bin/bash
+
 terraform_version_command=$(terraform version)
 terver=$(echo $terraform_version_command | head -n  1| cut -c 12-16)
 etalon_version=$(echo "1.3.7")
