@@ -1,22 +1,33 @@
-timeout 30
+#!/bin/bash
 
-if ping -c 1 gcp-server-1-dev &> /dev/null
-then
-  echo "SUCCESS"
-else
-  echo "ERROR"
-fi
+sleep 30
 
-if ping -c 1 gcp-server-2-dev &> /dev/null
+ping dev-gcp-server-1 -w3
+EXIT_STATUS=$?
+if [ $EXIT_STATUS -eq 124 ]
 then
-  echo "SUCCESS"
+echo 'Process Timed Out!'
 else
-  echo "ERROR"
+echo 'Process did not timeout. Something else went wrong.'
 fi
+exit $EXIT_STATUS
 
-if ping -c 1 gcp-server-3-dev &> /dev/null
+ping dev-gcp-server-2 -w3
+EXIT_STATUS=$?
+if [ $EXIT_STATUS -eq 124 ]
 then
-  echo "SUCCESS"
+echo 'Process Timed Out!'
 else
-  echo "ERROR"
+echo 'Process did not timeout. Something else went wrong.'
 fi
+exit $EXIT_STATUS
+
+ping dev-gcp-server-3 -w3
+EXIT_STATUS=$?
+if [ $EXIT_STATUS -eq 124 ]
+then
+echo 'Process Timed Out!'
+else
+echo 'Process did not timeout. Something else went wrong.'
+fi
+exit $EXIT_STATUS
