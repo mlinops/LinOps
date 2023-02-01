@@ -1,7 +1,6 @@
 # Terraform provider - Google Cloud Platform. 
 
 provider "google" {
-    credentials = file("test.json")
     project     = var.project_id
     region      = var.region
     zone        = var.zone
