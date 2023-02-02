@@ -37,8 +37,6 @@ variable "ubuntu" {
   default = "ubuntu-2004-focal-v20230125"
 }
 
-###########################################################################
-
 ### SSH
 
 variable "ssh_user_1" {
@@ -59,4 +57,9 @@ variable "ssh_key_2" {
   type = string
 }
 
+### SERVICE ACCOUNT
 
+variable "service_acc_email" {
+  type = string
+  default = "terraform-automation@onyx-osprey-371920.iam.gserviceaccount.com"
+}
