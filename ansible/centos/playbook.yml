@@ -1,10 +1,6 @@
 - name: Applying roles for deploy LAMP
-  hosts: ubuntu
+  hosts: centos
   become: yes
   roles: 
     - system
     - apache
-    - php
-    - mysql
-    - wordpress
-

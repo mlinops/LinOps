@@ -1,3 +1,5 @@
+#!/bin/bash
+
 ansible_version=$(sudo ansible --version | head -n 1 | cut -c 9-13)
 
 etalon_ansible_version=$(echo "2.9.6")
