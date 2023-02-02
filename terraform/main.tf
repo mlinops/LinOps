@@ -58,7 +58,7 @@ resource "google_compute_instance" "server_1" {
   }
 }
 
-# ifsec:ignore: google-compute-no-project-wide-ssh-keys ifsec:ignore:google-compute-vm-disk-encryption-customer-key
+# ifsec:ignore:google-compute-no-project-wide-ssh-keys ifsec:ignore:google-compute-vm-disk-encryption-customer-key
 resource "google_compute_instance" "server_2" {
     name = "${terraform.workspace}-gcp-server-2"
     machine_type = var.machine_type
