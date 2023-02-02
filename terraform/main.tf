@@ -51,6 +51,11 @@ resource "google_compute_instance" "server_1" {
         create_before_destroy = true
         #prevent_destroy = false
     }
+
+    service_account {
+    email = var.service_acc_email
+    scopes = ["https://www.googleapis.com/auth/cloud-platform"]
+  }
 }
 
 # ifsec:ignore: google-compute-no-project-wide-ssh-keys ifsec:ignore:google-compute-vm-disk-encryption-customer-key
@@ -90,6 +95,11 @@ resource "google_compute_instance" "server_2" {
         create_before_destroy = true
         #prevent_destroy = true
     }
+
+    service_account {
+    email = var.service_acc_email
+    scopes = ["https://www.googleapis.com/auth/cloud-platform"]
+  }
 }
 
 # ifsec:ignore:google-compute-no-project-wide-ssh-keys ifsec:ignore:google-compute-vm-disk-encryption-customer-key
@@ -130,5 +140,10 @@ resource "google_compute_instance" "server_3" {
         create_before_destroy = true
         #prevent_destroy = false
     }
+
+    service_account {
+    email = var.service_acc_email
+    scopes = ["https://www.googleapis.com/auth/cloud-platform"]
+  }
 }
 
