@@ -36,6 +36,8 @@ Release CI/CD pipeline:
 
 Standart Wordpress OutPut
 
+![fff](https://user-images.githubusercontent.com/101510056/216602286-8a261ced-af3a-4ba4-b299-c3355427f59c.jpg)
+
 ![ksdfghjk](https://user-images.githubusercontent.com/101510056/216449042-c635b9fd-87e8-4ecb-a126-d2d3935dac96.jpg)
 
 GCP PROD Workspace:
@@ -176,7 +178,7 @@ print_r($post_id);
 ?>
 ```
 
-### A few articles that might help you:  
+### A few articles that might help you: 
 
  📧 [How to make a mail server](https://docs.gitlab.com/ee/administration/reply_by_email_postfix_setup.html)     
  🤖 [How to make notification bot](https://github.com/JackB1ack/telegram-notification)        
