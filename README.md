@@ -47,7 +47,7 @@ GCP PROD Workspace:
 ### A bit of magic with Merlin VMs: 🪄
 The good wizard Merlin came to help my project. Yes, yes, it was he who created 3 managing Ansible servers for each workspace. (It's a joke...)
 
-Merlin VMs это - удаленные Ansible-сервера, управляемые Azure DevOps посредствам агента. Для каждого workspace предусмотрен свой "волшебник".
+Merlin VMs это - remote Ansible servers managed by Azure DevOps through an agent. Each workspace has its own 'wizard'.
 
 Merlins can:
 - manage application configuration and deployment
