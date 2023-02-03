@@ -153,7 +153,7 @@ cronitor discover
 ```
 ![ksdfghjk](https://user-images.githubusercontent.com/101510056/216449042-c635b9fd-87e8-4ecb-a126-d2d3935dac96.jpg)
 
-### ✔️ Добавление статьи
+### ✔️ Adding an article:
 
 To add an article to a Wordpress site, we will use a script that must be placed in the Wordpress root folder:
 
