@@ -29,11 +29,12 @@ Technologies used in this project:
 ![ksdfghjk](https://user-images.githubusercontent.com/101510056/216449042-c635b9fd-87e8-4ecb-a126-d2d3935dac96.jpg)
 
 Pipelines:
-
-![изображение](https://user-images.githubusercontent.com/101510056/216589009-2ef84b71-4fac-4f01-a0d9-26f4043c63de.png)
+![изображение](https://user-images.githubusercontent.com/101510056/216601227-ef70942a-007b-4018-b981-e868b8c19ca1.png)
 
 Release CI/CD pipeline:
 ![изображение](https://user-images.githubusercontent.com/101510056/216588515-677a3c3c-1c35-48ac-b894-b99eb5e597fb.png)
+
+Standart Wordpress OutPut
 
 ![ksdfghjk](https://user-images.githubusercontent.com/101510056/216449042-c635b9fd-87e8-4ecb-a126-d2d3935dac96.jpg)
 
