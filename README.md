@@ -38,7 +38,8 @@ Release CI/CD pipeline:
 ![ksdfghjk](https://user-images.githubusercontent.com/101510056/216449042-c635b9fd-87e8-4ecb-a126-d2d3935dac96.jpg)
 
 GCP PROD Workspace:
-![изображение](https://user-images.githubusercontent.com/101510056/216593042-fe925b94-6b06-4074-b3f1-a9a73d0b2d67.png)
+
+![изображение](https://user-images.githubusercontent.com/101510056/216593517-ca904df7-fd9a-4ac7-a2f8-7a581e1a985d.png)
 
 ### A bit of magic with Merlin VMs: 🪄
 The good wizard Merlin came to help my project. Yes, yes, it was he who created 3 managing Ansible servers for each workspace. (It's a joke...)
