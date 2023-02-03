@@ -77,7 +77,7 @@ As you can see, each Merlin is assigned to his space. Connecting directly to 'dy
 ![ksdfghjk](https://user-images.githubusercontent.com/101510056/216449042-c635b9fd-87e8-4ecb-a126-d2d3935dac96.jpg)
 
 
-### Telegram notifications
+### 📫 Telegram notifications
 
 To implement the project, monitoring the implementation of tasks was vital. Therefore, a special 'LinOps' bot was created for the project, which, after passing the CI / CD stages, sends a notification to the group in a telegram. 
 
@@ -89,7 +89,7 @@ To implement the project, monitoring the implementation of tasks was vital. Ther
 
 In order for Telegram to tell us about the availability of virtual machines and about creating a database backup, we need scripts with the creation of a notification.
 
-### Monitoring script     
+### 🧐 Monitoring script     
 (Cron + Script --> ❗ Telegram notifications)  
 
 ```
@@ -145,6 +145,31 @@ Run `cronitor discover` to selectively add monitoring to each job in your cronta
 cronitor discover
 ```
 ![ksdfghjk](https://user-images.githubusercontent.com/101510056/216449042-c635b9fd-87e8-4ecb-a126-d2d3935dac96.jpg)
+
+### ✔️ Добавление статьи
+
+Чтобы добавить статью на сайт Wordpress мы воспользуемся скриптом? который должен быть помещен в корневую папку Wordpress: 
+
+```
+<?php
+
+require_once( dirname(__FILE__) . '/wp-load.php' );
+require_once( dirname(__FILE__) . '/wp-admin/includes/admin.php' );
+
+$post_data = array(
+    'post_title'    => 'New test post with an additional field',
+    'post_content'  => 'Content of the test post with an additional field',
+    'post_status'   => 'publish',
+    'post_author'   => 1,
+    'post_category' => array(1)
+);
+
+// Create a post with required fields.
+$post_id = wp_insert_post($post_data, true);
+print_r($post_id);
+
+?>
+```
 
 ### A few articles that might help you:  
 
