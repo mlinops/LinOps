@@ -173,8 +173,8 @@ print_r($post_id);
 
 ### A few articles that might help you:  
 
- 📧 [How to make a mail server]()     
- 🤖 [How to make an Azure DevOps notification bot]()        
+ 📧 [How to make a mail server](https://docs.gitlab.com/ee/administration/reply_by_email_postfix_setup.html)     
+ 🤖 [How to make notification bot](https://github.com/JackB1ack/telegram-notification)        
  🖥️ [How to launch Ubuntu Desktop on Google Cloud](https://ubuntu.com/blog/launch-ubuntu-desktop-on-google-cloud)     
  
  ![ubuntu-linux-minimalizm](https://user-images.githubusercontent.com/101510056/216446129-16372d5f-7ccc-4582-a6a2-9f5f14da616f.jpg)
