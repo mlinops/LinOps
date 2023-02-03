@@ -1,4 +1,4 @@
-# Terraform provider - Google Cloud Platform. 
+# Terraform basic script for deploy envirpment into Google Cloud Platform. 
 
 provider "google" {
     project     = var.project_id
@@ -13,7 +13,6 @@ terraform {
   }
 }
 
-# ifsec:ignore:google-compute-no-project-wide-ssh-keys ifsec:ignore:google-compute-vm-disk-encryption-customer-key
 resource "google_compute_instance" "server_1" {
     name            = "${terraform.workspace}-gcp-server-1"
     machine_type    = var.machine_type
@@ -58,7 +57,6 @@ resource "google_compute_instance" "server_1" {
   }
 }
 
-# ifsec:ignore:google-compute-no-project-wide-ssh-keys ifsec:ignore:google-compute-vm-disk-encryption-customer-key
 resource "google_compute_instance" "server_2" {
     name = "${terraform.workspace}-gcp-server-2"
     machine_type = var.machine_type
@@ -102,7 +100,6 @@ resource "google_compute_instance" "server_2" {
   }
 }
 
-# ifsec:ignore:google-compute-no-project-wide-ssh-keys ifsec:ignore:google-compute-vm-disk-encryption-customer-key
 resource "google_compute_instance" "server_3" {
     name = "${terraform.workspace}-gcp-server-3"
     machine_type = var.machine_type
