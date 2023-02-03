@@ -1,4 +1,4 @@
-# Auto fill parameters for TEST workspace
+# Auto fill parameters for PROD workspace
 
 region                  = "us-west1"
 zone                    = "us-west1-b"

@@ -1,5 +1,7 @@
 #!/bin/bash
 
+# This script checks the availability of host after deploying
+
 sleep 30
 
 ping prod-gcp-server-1 -w3

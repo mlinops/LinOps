@@ -1,6 +1,0 @@
-- name: Applying roles for deploy LAMP
-  hosts: centos
-  become: yes
-  roles: 
-    - system
-    - apache
