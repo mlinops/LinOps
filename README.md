@@ -38,11 +38,11 @@ Standart Wordpress OutPut
 
 ![fff](https://user-images.githubusercontent.com/101510056/216602286-8a261ced-af3a-4ba4-b299-c3355427f59c.jpg)
 
-![ksdfghjk](https://user-images.githubusercontent.com/101510056/216449042-c635b9fd-87e8-4ecb-a126-d2d3935dac96.jpg)
-
 GCP PROD Workspace:
 
 ![изображение](https://user-images.githubusercontent.com/101510056/216593517-ca904df7-fd9a-4ac7-a2f8-7a581e1a985d.png)
+
+![ksdfghjk](https://user-images.githubusercontent.com/101510056/216449042-c635b9fd-87e8-4ecb-a126-d2d3935dac96.jpg)
 
 ### A bit of magic with Merlin VMs: 🪄
 The good wizard Merlin came to help my project. Yes, yes, it was he who created 3 managing Ansible servers for each workspace. (It's a joke...)
