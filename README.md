@@ -148,7 +148,7 @@ cronitor discover
 
 ### ✔️ Добавление статьи
 
-Чтобы добавить статью на сайт Wordpress мы воспользуемся скриптом? который должен быть помещен в корневую папку Wordpress: 
+To add an article to a Wordpress site, we will use a script that must be placed in the Wordpress root folder:
 
 ```
 <?php
