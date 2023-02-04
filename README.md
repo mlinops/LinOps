@@ -36,7 +36,7 @@ Release CI/CD pipeline:
 
 Standart Wordpress OutPut
 
-![fff](https://user-images.githubusercontent.com/101510056/216602286-8a261ced-af3a-4ba4-b299-c3355427f59c.jpg)
+![изображение](https://user-images.githubusercontent.com/101510056/216780022-de85bb6d-6290-4308-8a54-56ad40c4a927.png)
 
 GCP PROD Workspace:
 
